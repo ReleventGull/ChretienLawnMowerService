@@ -1,6 +1,6 @@
 import React from "react";
 import {Routes, Route} from 'react-router-dom'
-import {Navbar} from './Components/exports'
+import {Navbar, Home} from './Components/exports'
 
 const App = () => {
     return (
@@ -8,7 +8,7 @@ const App = () => {
         <Navbar/>
         <div className="pageWrap">
             <Routes>
-                <Route path="/home" />
+                <Route path="/home" element={<Home />}/>
             </Routes>
         </div>
         </>
