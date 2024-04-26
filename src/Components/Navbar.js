@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 const Navbar = () => {
      return (
         <div className="navBar">
@@ -6,21 +6,21 @@ const Navbar = () => {
                 <img className="logo" src="/images/Logo.png" />
             </div>
             <div className="rightNavBox">
-                <div className="navButton">
+                <Link to="/home" className="navButton">
                     <h3>Home</h3>
-                </div>
-                <div className="navButton">
+                </Link>
+                <Link to="/about" className="navButton">
                     <h3>About Us</h3>
-                </div>
-                <div className="navButton">
+                </Link>
+                <Link to="/contact" className="navButton">
                     <h3>Contact Us</h3>
-                </div>
-                <div className="navButton phone">
+                </Link>
+                <Link className="navButton phone">
                     <h3 >
                         337-368-7641
                     </h3>
                     
-                </div>
+                </Link>
   
             </div>
         </div>

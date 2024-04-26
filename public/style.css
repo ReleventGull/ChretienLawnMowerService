@@ -9,6 +9,10 @@ body, html, #app {
     padding: 0;
     box-sizing: border-box;
     height: 100%;
+    width: 100%;
+}
+#app {
+    overflow: auto ;
 }
 
 :root {
@@ -45,6 +49,8 @@ body, html, #app {
     text-align: center;
     text-wrap: nowrap;
     transition: .2s;
+    text-decoration: none;
+    color: white;
 }
 
 .navButton:last-child{
@@ -63,6 +69,8 @@ body, html, #app {
 }
 
 .pageWrap {
+    background-color: red;
+    padding-top: 6rem;
     height: 100%;
-    margin-top: 5;
+    box-sizing: border-box;
 }
