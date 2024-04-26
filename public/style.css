@@ -61,3 +61,8 @@ body, html, #app {
 .logo {
     height: 100%;
 }
+
+.pageWrap {
+    height: 100%;
+    margin-top: 5;
+}
