@@ -1,11 +1,10 @@
-import {Vouch} from './exports'
+import {Vouch, Landscape} from './exports'
+
 const Home = () => {
-
-
     return (
         <div className="routePage home">
            <Vouch />
-            
+            <Landscape />
         </div>
     )
 }

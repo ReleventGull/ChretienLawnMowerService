@@ -17,6 +17,7 @@ body, html, #app {
 
 :root {
     --primary-green: #034b0b;
+    --primary-black: #020B0A;
 }
 
 /********************NavBar Styling*************/
