@@ -12,15 +12,17 @@ const Vouch = () => {
     
     return (
         !vouches ? null : 
-        <div className="vouchBox">
-            <div className="vouchText">
-                <h3>
-                "{currentVouch ? currentVouch.message : ''}"
-                <p>-Anonymous</p>
-                </h3>
-
-            </div>
+    
+    <div className="caraselBox">
+        <div className="grayCover"/>
+        <div className="caraBox one">
+            <h1>Chretien Lawn Care Service</h1>
         </div>
+        <div className="caraBox two">
+            <button>Get A Free Quote</button>
+        </div>
+        
+    </div>
     )
 }
 export default Vouch

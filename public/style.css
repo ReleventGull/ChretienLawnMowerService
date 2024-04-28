@@ -29,7 +29,8 @@ body, html, #app {
     color: white;
     display: flex;
     flex-direction: row;
-    padding: .3rem
+    padding: .3rem;
+    z-index: 2
 }
 .leftNavBox {
     margin-left: 1rem;
