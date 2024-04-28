@@ -9,6 +9,9 @@ const Landscape = () => {
                 <img src='images/Mowing.png'/>
                 <img src='images/Trimming.png'/>
                 <img src='images/Edging.png'/>
+                <img src='images/Weeds.png'/>
+                <img src='images/Hedging.png'/>
+                <img src='images/Flower.png'/>
             </div>
             
         </div>
