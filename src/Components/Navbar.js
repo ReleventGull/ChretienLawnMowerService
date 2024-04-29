@@ -16,8 +16,8 @@ const Navbar = () => {
                     <h3>Contact Us</h3>
                 </Link>
                 <Link className="navButton phone">
-                    <h3>
-                        Call Us: 337-368-7641
+                    <img className="phoneLogo" src='images/Phone.png'/>
+                    <h3>337-368-7641
                     </h3>
                     
                 </Link>

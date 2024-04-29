@@ -57,10 +57,15 @@ body, html, #app {
 }
 
 .navButton:last-child{
+    display: flex;
+    align-items: center;
     margin-left: auto;
     margin-right: 1rem;
+    gap: .3rem
 }
-
+.phoneLogo {
+    height: 1.3rem
+}
 .navButton:hover {
     color: var(--primary-gold);
     cursor: pointer;
