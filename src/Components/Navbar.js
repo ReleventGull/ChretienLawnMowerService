@@ -2,9 +2,9 @@ import { Link } from "react-router-dom"
 const Navbar = () => {
      return (
         <div className="navBar">
-            <div className="leftNavBox">
+            {/* <div className="leftNavBox">
                 <img className="logo" src="/images/Logo.png" />
-            </div>
+            </div> */}
             <div className="rightNavBox">
                 <Link to="/home" className="navButton">
                     <h3>Home</h3>
@@ -16,8 +16,8 @@ const Navbar = () => {
                     <h3>Contact Us</h3>
                 </Link>
                 <Link className="navButton phone">
-                    <h3 >
-                        337-368-7641
+                    <img className="phoneLogo" src='images/Phone.png'/>
+                    <h3>337-368-7641
                     </h3>
                     
                 </Link>
