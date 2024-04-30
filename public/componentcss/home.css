@@ -1,6 +1,8 @@
 .routePage.home {
     height: 100%;
     width: 100%;
+    
+    z-index: 4;
 } 
 
 h3 {
@@ -11,20 +13,21 @@ h3 {
     color: white;
     position: relative;
     box-sizing: border-box;
-    padding: 1rem;
-    width: 100%; 
-    height: auto;
-    display: flex;
-    background-image: url(../images/Truck.png);
-    min-height: 70vh;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    padding: 5vw;
+    width: 100%;  
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: url(https://img.freepik.com/free-photo/green-grass-field-background_1252-1097.jpg?t=st=1714434097~exp=1714437697~hmac=3f6beaaeab6b14fca48b8c34a124d9b37a0c18ac8552d97cf5c1db1be1325bae&w=1800);
+    background-position: center;
+    background-size: cover;
+}
+
+.caraselBox img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .grayCover {
@@ -35,8 +38,9 @@ h3 {
 }
 
 .caraBox h1 {
-    font-size: 5em;
-    color: var(--primary-gold)
+    font-size: 3.4rem;
+    color: var(--primary-gold);
+    text-align: center;
 }
 .caraBox {
     display: flex;
@@ -105,6 +109,8 @@ h3 {
         margin-left: auto;
     }
 }
+
+
 
 .homeFooter {
     padding: .5rem;

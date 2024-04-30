@@ -11,9 +11,7 @@ body, html, #app {
     height: 100%;
     width: 100%;
 }
-#app {
-    overflow: auto ;
-}
+
 
 :root {
     --primary-green: #034b0b;
@@ -80,4 +78,15 @@ body, html, #app {
     padding-top: 5rem;
     height: 100%;
     box-sizing: border-box;
+}
+
+@media screen and (max-width: 570px) {
+    .rightNavBox {
+        margin: 0;
+        width: 100%;
+        justify-content: space-around;
+    }
+    .navButton.phone {
+        display: none;
+    }
 }
