@@ -13,13 +13,13 @@ h3 {
     color: white;
     position: relative;
     box-sizing: border-box;
-    padding: 5vw;
+    padding: 4vw;
     width: 100%;  
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url(https://img.freepik.com/free-photo/green-grass-field-background_1252-1097.jpg?t=st=1714434097~exp=1714437697~hmac=3f6beaaeab6b14fca48b8c34a124d9b37a0c18ac8552d97cf5c1db1be1325bae&w=1800);
+    background-image: url(https://images.unsplash.com/photo-1552761831-7ef8ec07adbd?q=80&w=2604&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
     background-position: center;
     background-size: cover;
 }
@@ -38,6 +38,7 @@ h3 {
 }
 
 .caraBox h1 {
+    margin-top: 0rem;
     font-size: 3.4rem;
     color: var(--primary-gold);
     text-align: center;
@@ -45,8 +46,16 @@ h3 {
 .caraBox {
     display: flex;
     z-index: 1;
+    flex-direction: column;
 }
-
+.caraBox.two {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background-color: white;
+    padding: 1.3rem;
+    color: black;
+}
 .caraBox button {
     background-color: var(--primary-green);
     outline: 0;
@@ -54,10 +63,11 @@ h3 {
     border-bottom-left-radius: 15px;
     border: 0 ;
     color: var(--primary-gold);;
-    font-size: 2.8rem;
+    font-size: 1.8rem;
     z-index: 1;
     cursor: pointer;
     transition: .2s;
+    margin-top: 1rem
 }
 .caraBox button:hover {
     background-color: var(--primary-gold);
@@ -151,4 +161,30 @@ h3 {
 
 .socialImageBox img {
     height: 2rem
+}
+
+.inputDivBox {
+    width: 100%;
+}
+
+.inputDivBox input {
+    outline: none;
+    border: 2px solid black;
+    border-radius: 3px;
+    padding: .4rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+.nameBox {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   width: 100%;
+
+   gap: .5rem
+}
+.labelInputBox{
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    justify-content: space-between;
 }
