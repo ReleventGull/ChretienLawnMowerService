@@ -52,6 +52,11 @@ body, html, #app {
     transition: .2s;
     text-decoration: none;
     color: white;
+    border-bottom: 2px solid transparent;
+}
+
+.navButton.active {
+    border-bottom: 2px solid var(--primary-gold);
 }
 
 .navButton:last-child{
