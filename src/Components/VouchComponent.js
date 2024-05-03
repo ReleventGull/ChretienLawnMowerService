@@ -68,9 +68,9 @@ const Vouch = () => {
                     </div>
                 </div>
             </div>
-            <button>Get A Free Quote</button>
+            <button className="bg-sky-500 hover:bg-sky-700">Get A Free Quote</button>
         </div>
-        
+        <button>FWawf</button>
     </div>
     )
 }
