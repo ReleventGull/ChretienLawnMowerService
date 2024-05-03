@@ -26,7 +26,6 @@ const Navbar = () => {
                     <img className="phoneLogo" src='images/Phone.png'/>
                     <h3>337-368-7641
                     </h3>
-                    
                 </Link>
   
             </div>
