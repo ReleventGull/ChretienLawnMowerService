@@ -13,9 +13,9 @@ const Navbar = () => {
      
     return (
         <div className="navBar">
-            {/* <div className="leftNavBox">
+            <div className="leftNavBox">
                 <img className="logo" src="/images/Logo.png" />
-            </div> */}
+            </div>
             <div className="rightNavBox">
                 {list.map(item => 
                     <Link to={item} className={'navButton' + (`/${item}` == active ? ' active' : '')}>
