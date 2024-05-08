@@ -48,7 +48,13 @@ h3 {
     width: 30rem;
     max-width: 100%;
     border-radius: 10px;
+    opacity: 0.6;
+    transition: .2s
+}
 
+input:focus ~ .contactBox {
+    background-color: red;
+    opacity: 1;;
 }
 
 
@@ -204,14 +210,6 @@ h3 {
     gap: .3rem;
     justify-content: space-between;
 }
-
-
-
-
-
-
-
-
 
 .arrowContainer{
     z-index: 2;
