@@ -216,7 +216,8 @@ input:focus ~ .contactBox {
 /***********************FOOTER************************/
 
 .homeFooterContainer {
-    margin-top: 5rem
+    margin-top: 5rem;
+    padding-bottom: 1rem;
 }
 .homeFooter {
     padding: 1rem;
