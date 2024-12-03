@@ -6,7 +6,7 @@ const Contact = () => {
         document.getElementsByClassName('contactBox')[0].style.opacity = .6
     }
     return (
-        <div>
+        
         <div className="contactBox">
         <div className="caraBox">
             <div className="inputDivBox one">
@@ -60,7 +60,7 @@ const Contact = () => {
             <button className="bg-sky-500 hover:bg-sky-700">Get A Free Quote</button>
         </div>
         </div>
-        </div>
+  
     )
 }
 

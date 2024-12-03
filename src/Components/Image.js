@@ -1,9 +1,18 @@
-import { useEffect, useState} from "react"
-import image1 from './Images/House.png'
-import image2 from './Images/House2.png'
+
 const Images = ({imageSlideTick, imageIndex, img}) => {
+    const imageStyle = {
+        backgroundImage: `url(${img})`,
+        display: 'absolute',
+        width: '100%',
+        height: '700px',
+        flexGrow: '0',
+        flexShrink: '0',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        translate:`${-100 * imageIndex}%`, transition: "1s"
+    }
     return (
-        <img onClick={() => clearTimeout(imageSlideTick)} className="images" src={img} style={{translate:`${-100 * imageIndex}%`, transition: "1s"}}/>
+        <div onClick={() => clearTimeout(imageSlideTick)} style={imageStyle}/>
  )
 }
 
