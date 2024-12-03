@@ -8,7 +8,7 @@ const App = () => {
     const loc = useLocation()
     const nav = useNavigate()
     useEffect(() => {
-        if(loc.pathname = '/') {
+        if(loc.pathname == '/') {
             nav('home')
         }
     }, [loc.pathname])

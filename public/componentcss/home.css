@@ -225,7 +225,14 @@ input:focus ~ .contactBox {
     justify-content: center;
     gap: 3rem;
 }
-
+.homeFooter a {
+    color: var(--primary-green);
+    transition: .2s;
+}
+.homeFooter a:hover {
+    color: var(--primary-gold);
+    transition: .2s;    
+}
 .footerLogo {
     height: 2.5rem
 }
