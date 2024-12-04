@@ -12,6 +12,17 @@ const createTables = async() => {
             "phoneNumber" VARCHAR(255),
             "isAdmin" BOOLEAN DEFAULT true NOT NULL
         );
+        CREATE TABLE inquiry (
+            id SERIAL PRIMARY KEY,
+            email VARCHAR(255),
+            "phoneNumber" INTEGER,
+            "firstName" VARCHAR(255) NOT NULL,
+            "lastName" VARCHAR(255),
+            address VARCHAR(255) NOT NULL,
+            "addressTwo" VARCHAR(255),
+            city VARCHAR(255) NOT NULL,
+            "zipCode" INTEGER NOT NULL
+            );
             `)
     }catch(error){
         console.error("There was an error creating the tables")
@@ -23,6 +34,7 @@ const dropTables = async() => {
     try {
         await client.query(`
             DROP TABLE IF EXISTS users;
+            DROP TABLE IF EXISTS inquiry;
             `)
     }catch(error) {
         console.error("There was an error dropping the tables")
