@@ -3,7 +3,6 @@ const client  = require('./index')
 const {createUser} = require('./user')
 const {createInquiry} = require('./inquiry')
 const createInitialUsers = async() => {
-    console.log("Creating users")
     const userJaron = await createUser(
         {
         username:"Jaronian", 
