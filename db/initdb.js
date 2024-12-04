@@ -21,7 +21,7 @@ const createTables = async() => {
             address VARCHAR(255) NOT NULL,
             "addressTwo" VARCHAR(255),
             city VARCHAR(255) NOT NULL,
-            "zipCode" INTEGER NOT NULL,
+            "zipCode" VARCHAR(255) NOT NULL,
             date BIGINT NOT NULL
             );
             `)
