@@ -10,6 +10,7 @@ inquiryRouter.post('/create', async (req, res, next) => {
     let error = false
     let errorObject = {}
     const {email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode} = req.body
+    console.log(req.body)
     const checkEmail = validator.isEmail(email)
     const checkPhoneNumber = validator.isMobilePhone(`${phoneNumber}`, 'en-US')
     if(!checkEmail) {
@@ -39,6 +40,7 @@ inquiryRouter.post('/create', async (req, res, next) => {
     if(error) {
         res.status(400).send( {
             error: "There was an error creating inquiry.",
+            status: 404,
             body: errorObject
         })
     }else {
@@ -56,7 +58,7 @@ inquiryRouter.post('/create', async (req, res, next) => {
             zipCode: zipCode,
             date: todayDate
         })
-        res.send({msg:"Inquiry Created", inquiry: inquiry})
+        res.send({status: 200, msg:"Inquiry Created", inquiry: inquiry})
     }
 })
 
