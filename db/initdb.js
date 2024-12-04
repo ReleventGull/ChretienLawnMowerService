@@ -15,13 +15,14 @@ const createTables = async() => {
         CREATE TABLE inquiry (
             id SERIAL PRIMARY KEY,
             email VARCHAR(255),
-            "phoneNumber" INTEGER,
+            "phoneNumber" VARCHAR(255),
             "firstName" VARCHAR(255) NOT NULL,
             "lastName" VARCHAR(255),
             address VARCHAR(255) NOT NULL,
             "addressTwo" VARCHAR(255),
             city VARCHAR(255) NOT NULL,
-            "zipCode" INTEGER NOT NULL
+            "zipCode" INTEGER NOT NULL,
+            date BIGINT NOT NULL
             );
             `)
     }catch(error){
