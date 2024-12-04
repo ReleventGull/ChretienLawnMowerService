@@ -14,4 +14,4 @@ app.use(express.static(require('path').join(__dirname, 'build')));
 app.use(morgan('dev'))
 app.use(express.json())
 const apiRouter = require('./api/index')
-app.use(apiRouter)
+app.use('/api', apiRouter)
