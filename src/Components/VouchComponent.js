@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Contact, Images } from './exports'
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react"
 import Swiper from 'swiper/bundle'
@@ -11,20 +11,21 @@ import image4 from './Images/Truck.png'
 const Vouch = ({imageSlideTick}) => {
     const [images, setImages] = useState([image1, image2, image3])
     const [imageIndex, setImageIndex ] = useState(1)
-    
-    const swiper = new Swiper('.swiper', {
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        slidesPerView: 1,
-        spaceBetween: 10,
-        speed: 800,
-        autoplay: {
-            delay: 8000,
-          },
-      });
-    
+    const swipeRef = useRef(null)
+    useEffect(() => {
+        swipeRef.current = new Swiper('.swiper', {
+            loop: true, // Enables looping
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+            slidesPerView: 1,
+            speed: 800,
+            autoplay: {
+              delay: 8000,
+            },
+          });
+    }, [])
 
     return (
         <div style={{width: '100%', position: 'relative'}}>
