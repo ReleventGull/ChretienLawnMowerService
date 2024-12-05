@@ -40,7 +40,6 @@ h3 {
 }
 
 .contactBox {
-    z-index: 7;
     display: flex;
     justify-content: center;
     color: var(--primary-gold);
@@ -48,7 +47,10 @@ h3 {
     transition: .2s;
     padding-top: 1rem;
 }
-
+.contactBoxContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 .contactBox input {
     color: black;
 }
@@ -297,4 +299,24 @@ input:focus ~ .contactBox {
     height: 35vw; 
     width: 70vw;
     border-radius: 10px
+}
+
+.contactBoxTwo {
+    font-weight: bold;
+
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem
+}
+.contactBox h1 {
+    font-size: 2rem;
+}
+.contactBox h2 {
+    font-size: 1.2rem;
+}
+.contactBox2Mini {
+    display: flex;
+    gap: .5rem;
 }

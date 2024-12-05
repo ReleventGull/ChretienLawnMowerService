@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { createInquiry } from "./api"
-import { ThermometerSnowflake } from "lucide-react"
-import { Autoplay } from "swiper/modules"
+import ContactTwo from './ContactTwo'
 const Contact = () => {
     const [email, setEmail] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
@@ -73,7 +72,9 @@ const Contact = () => {
     }
     return (
         <div className="contactBox">
-        <div className="caraBox">
+            <div className="contactBoxContainer">
+            <ContactTwo />
+            <div className="caraBox">
             <div className="inputDivBox one">
                 <div className="nameBox">
                     <div className="labelInputBox">
@@ -142,6 +143,10 @@ const Contact = () => {
             }
             
         </div>
+            </div>
+            
+
+       
         </div>
     )
 }
