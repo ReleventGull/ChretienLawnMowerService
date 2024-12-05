@@ -27,6 +27,15 @@ const Vouch = ({imageSlideTick}) => {
           });
     }, [])
 
+    const scrollDown = () => {
+        const [contactBox] = document.getElementsByClassName('contactBox')
+        const [inputToFocus] = document.getElementsByClassName('inputToFocus')
+        contactBox.scrollIntoView({behavior: 'smooth'})
+        setTimeout(() => {
+            inputToFocus.focus()
+        }, 800)
+    }
+
     return (
         <div style={{width: '100%', position: 'relative'}}>
             <div style={{height: '500px', width: '60rem', borderRadius: '10px', }} className="swiper">
@@ -45,7 +54,7 @@ const Vouch = ({imageSlideTick}) => {
             <div className="swiper-scrollbar"></div>
             <div className="vouchQuoteBox">
                 <h1>Lawn Care For Everyone!</h1>
-                <button className="getQuoteButton">Get A Free Quote</button>
+                <button onClick={scrollDown} className="getQuoteButton">Get A Free Quote</button>
             </div>
             </div>
         </div>

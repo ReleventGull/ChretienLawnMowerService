@@ -45,7 +45,8 @@ h3 {
     justify-content: center;
     color: var(--primary-gold);
     width: 100%;
-    transition: .2s
+    transition: .2s;
+    padding-top: 1rem;
 }
 
 .contactBox input {
