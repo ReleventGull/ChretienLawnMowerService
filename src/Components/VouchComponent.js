@@ -42,8 +42,11 @@ const Vouch = ({imageSlideTick}) => {
             <div className="swiper-button-prev"></div>
             <div className="swiper-button-next"></div>
             <div className="swiper-scrollbar"></div>
+            <div className="vouchQuoteBox">
+                <h1>Lawn Care For Everyone!</h1>
+                <button className="getQuoteButton">Get A Free Quote</button>
             </div>
-            <Contact />
+            </div>
         </div>
 
     )

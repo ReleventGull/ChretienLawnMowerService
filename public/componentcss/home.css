@@ -1,7 +1,9 @@
 .routePage.home {
     height: 100%;
     width: 100%;
-    
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
     z-index: 4;
 } 
 
@@ -38,17 +40,11 @@ h3 {
 }
 
 .contactBox {
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust horizontally */
-    position: absolute;
     z-index: 7;
-    bottom: -50%;
-    background-color: var(--primary-green);
+    display: flex;
+    justify-content: center;
     color: var(--primary-gold);
-    width: 30rem;
-    max-width: 100%;
-    border-radius: 10px;
-    opacity: 0.6;
+    width: 100%;
     transition: .2s
 }
 
@@ -80,7 +76,10 @@ input:focus ~ .contactBox {
     gap: .3rem;
     padding: 1rem;
     font-weight: bold;
-
+    width: 30rem;
+    max-width: 100%;
+    background-color: var(--primary-green);
+    border-radius: 10px;
 }
 
 .caraBox button {
@@ -128,25 +127,6 @@ input:focus ~ .contactBox {
     border-radius: 10px;
     width: 20rem;
     box-shadow: -6px 6px 10px 0;
-}
-@media screen and (max-width: 1200px) {
-    .landscapeOptions {
-        grid-template-columns: 1fr 1fr;
-    }
-    .landscapeOptions img {
-        margin-right: auto;
-        margin-left: auto;
-    }
-}
-@media screen and (max-width: 760px) {
-    .landscapeOptions {
-        grid-template-columns: 1fr
-    }
-    .landscapeOptions img {
-        margin-right: auto;
-        margin-left: auto;
-        width: 100%
-    }
 }
 
 
@@ -205,7 +185,6 @@ input:focus ~ .contactBox {
 
 .mapContainer {
     width: 100%;
-    margin-top: 17rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -229,7 +208,6 @@ input:focus ~ .contactBox {
 /***********************FOOTER************************/
 
 .homeFooterContainer {
-    margin-top: 5rem;
     padding-bottom: 1rem;
 }
 .homeFooter {
@@ -259,3 +237,51 @@ input:focus ~ .contactBox {
     gap:.3rem
 }
 /******************END FOOTER************************/
+
+
+.vouchQuoteBox {
+    position: absolute;
+    position: absolute;
+    top: 50%;           
+    left: 50%;          
+    transform: translate(-50%, -100%); 
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vouchQuoteBox h1 {
+    font-weight: bold;
+    color: var(--primary-gold);
+    font-size: 3rem;
+    text-wrap: nowrap;
+}
+
+.swiper-wrapper {
+    position: relative;
+}
+
+.getQuoteButton {
+    color: var(--primary-green);
+    outline: 0;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: 0 ;
+    background-color: var(--primary-gold);;
+    font-size: 1.8rem;
+    z-index: 1;
+    cursor: pointer;
+    transition: .2s;
+    margin-top: 1rem
+}
+
+.getQuoteButton:hover {
+    color: var(--primary-gold);
+    background-color: var(--primary-green);
+    transition: .2s;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+}

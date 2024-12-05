@@ -20,13 +20,7 @@ const Contact = () => {
     const [zipCodeError, setZipCodeError] = useState('')
     
     const [success, setSuccess] = useState(false)
-    const commitFocus = () => {
-        document.getElementsByClassName('contactBox')[0].style.opacity = 1
-    }
-    const commitBlur = () => {
-        if(email||phoneNumber|| firstName|| lastName|| address|| addressTwo|| city|| zipCode) return
-        document.getElementsByClassName('contactBox')[0].style.opacity = .6
-    }
+
 
     
     const submitInquiry = async() => {
@@ -84,11 +78,11 @@ const Contact = () => {
                 <div className="nameBox">
                     <div className="labelInputBox">
                         <label>First Name</label>
-                        <input placeholder="John" value={firstName} onChange={(e) => {setFirstName(e.target.value), setfirstNameError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}></input>
+                        <input placeholder="John" value={firstName} onChange={(e) => {setFirstName(e.target.value), setfirstNameError('')}}></input>
                     </div>
                     <div className="labelInputBox">
                         <label>Last Name</label>
-                        <input placeholder="Doe" value={lastName} onChange={(e) => setLastname(e.target.value)} onBlur={() => commitBlur()} onFocus={() => commitFocus()}></input>
+                        <input placeholder="Doe" value={lastName} onChange={(e) => setLastname(e.target.value)}></input>
                     </div>
                     <p className="errorText">{firstNameError}</p>
                 </div>
@@ -96,40 +90,40 @@ const Contact = () => {
             <div className="inputDivBox two">
                 <div className="labelInputBox">
                     <label>Phone Number</label>
-                    <input placeholder="1234567890" value={phoneNumber} onChange={(e) => {setPhoneNumber(e.target.value), setPhoneNumberError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}/>
+                    <input placeholder="1234567890" value={phoneNumber} onChange={(e) => {setPhoneNumber(e.target.value), setPhoneNumberError('')}}/>
                     <p className="errorText">{phoneNumberError}</p>
                 </div>
             </div>
             <div className="inputDivBox two">
                 <div className="labelInputBox">
                     <label>Email</label>
-                    <input placeholder='example@gmail.com' value = {email} onChange={(e) => {setEmail(e.target.value), setEmailError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}/>
+                    <input placeholder='example@gmail.com' value = {email} onChange={(e) => {setEmail(e.target.value), setEmailError('')}}/>
                     <p className="errorText">{emailError}</p>
                 </div>
             </div>
             <div className="inputDivBox three">
                 <div className="labelInputBox">
                     <label>Address Line 1 (required)</label>
-                    <input placeholder="12345 Address Road" value={address} onChange={(e) => {setAddress(e.target.value), setAddressError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}/>
+                    <input placeholder="12345 Address Road" value={address} onChange={(e) => {setAddress(e.target.value), setAddressError('')}}/>
                     <p className="errorText">{addressError}</p>
                 </div>
             </div>
             <div className="inputDivBox four">
                 <div className="labelInputBox">
                     <label>Address Line 2</label>
-                    <input value={addressTwo} onChange={(e) => setAddressTwo(e.target.value)} onBlur={() => commitBlur()} onFocus={() => commitFocus()}/>
+                    <input value={addressTwo} onChange={(e) => setAddressTwo(e.target.value)}/>
                 </div>
             </div>
             <div className="inputDivBox five">
                 <div className="nameBox">
                     <div className="labelInputBox">
                         <label>City (required) </label>
-                        <input placeholder="City" value={city} onChange={(e) => {setCity(e.target.value), setCityError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}></input>
+                        <input placeholder="City" value={city} onChange={(e) => {setCity(e.target.value), setCityError('')}}></input>
                         
                     </div>
                     <div className="labelInputBox">
                         <label>ZIP Code (required)</label>
-                        <input placeholder="13590" value={zipCode} onChange={(e) => {setZipCode(e.target.value), setZipCodeError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}></input>
+                        <input placeholder="13590" value={zipCode} onChange={(e) => {setZipCode(e.target.value), setZipCodeError('')}}></input>
                     </div>
                 </div>
                 <div className="errorBox">
