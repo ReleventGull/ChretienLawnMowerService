@@ -38,7 +38,7 @@ inquiryRouter.post('/create', async (req, res, next) => {
         errorObject.zipCodeError = "Please enter a valid zip code,"
     }
     if(error) {
-        res.status(400).send( {
+        res.send( {
             error: "There was an error creating inquiry.",
             status: 404,
             body: errorObject

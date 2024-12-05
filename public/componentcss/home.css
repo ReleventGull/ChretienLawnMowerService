@@ -52,11 +52,18 @@ h3 {
     transition: .2s
 }
 
-input:focus ~ .contactBox {
-    background-color: red;
-    opacity: 1;;
+.contactBox input {
+    color: black;
 }
 
+.errorText {
+    color: red;;
+}
+
+input:focus ~ .contactBox {
+    background-color: red;
+    opacity: 1;
+}
 
 .caraBox h1 {
     margin-top: 0rem;
@@ -158,8 +165,13 @@ input:focus ~ .contactBox {
    display: grid;
    grid-template-columns: 1fr 1fr;
    width: 100%;
-
    gap: .5rem
+}
+.errorBox {
+    width: 100%;
+    height: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 .labelInputBox{
     display: flex;
@@ -245,3 +257,4 @@ input:focus ~ .contactBox {
     justify-content: center;
     gap:.3rem
 }
+/******************END FOOTER************************/
