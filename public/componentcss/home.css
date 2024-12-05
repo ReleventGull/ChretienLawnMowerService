@@ -77,8 +77,9 @@ input:focus ~ .contactBox {
     flex-direction: column;
     display: flex;  
     flex-direction: column;
-    gap: .5rem;
+    gap: .3rem;
     padding: 1rem;
+    font-weight: bold;
 
 }
 

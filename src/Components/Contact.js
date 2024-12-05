@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import { createInquiry } from "./api"
+import { ThermometerSnowflake } from "lucide-react"
+import { Autoplay } from "swiper/modules"
 const Contact = () => {
     const [email, setEmail] = useState('')
-    const [phoneNumber, setPhoneNumbe] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastname] = useState('')
     const [address, setAddress] = useState('')
@@ -17,6 +19,7 @@ const Contact = () => {
     const [cityError, setCityError] = useState('')
     const [zipCodeError, setZipCodeError] = useState('')
     
+    const [success, setSuccess] = useState(false)
     const commitFocus = () => {
         document.getElementsByClassName('contactBox')[0].style.opacity = 1
     }
@@ -58,6 +61,20 @@ const Contact = () => {
             if(response.body.zipCodeError) {
                 setZipCodeError(response.body.zipCodeError)
             }
+        }else {
+            setSuccess(true)
+            setSuccess(true)
+            setFirstName('')
+            setLastname('')
+            setEmail('')
+            setAddress('')
+            setAddressTwo('')
+            setCity('')
+            setZipCode('')
+            setPhoneNumber('')
+            setTimeout(() => {
+                setSuccess(false)
+            }, 5000)
         }
     }
     return (
@@ -67,11 +84,11 @@ const Contact = () => {
                 <div className="nameBox">
                     <div className="labelInputBox">
                         <label>First Name</label>
-                        <input value={firstName} onChange={(e) => {setFirstName(e.target.value), setfirstNameError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}></input>
+                        <input placeholder="John" value={firstName} onChange={(e) => {setFirstName(e.target.value), setfirstNameError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}></input>
                     </div>
                     <div className="labelInputBox">
                         <label>Last Name</label>
-                        <input value={lastName} onChange={(e) => setLastname(e.target.value)} onBlur={() => commitBlur()} onFocus={() => commitFocus()}></input>
+                        <input placeholder="Doe" value={lastName} onChange={(e) => setLastname(e.target.value)} onBlur={() => commitBlur()} onFocus={() => commitFocus()}></input>
                     </div>
                     <p className="errorText">{firstNameError}</p>
                 </div>
@@ -79,21 +96,21 @@ const Contact = () => {
             <div className="inputDivBox two">
                 <div className="labelInputBox">
                     <label>Phone Number</label>
-                    <input value={phoneNumber} onChange={(e) => {setPhoneNumbe(e.target.value), setPhoneNumberError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}/>
-                    {phoneNumberError}
+                    <input placeholder="1234567890" value={phoneNumber} onChange={(e) => {setPhoneNumber(e.target.value), setPhoneNumberError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}/>
+                    <p className="errorText">{phoneNumberError}</p>
                 </div>
             </div>
             <div className="inputDivBox two">
                 <div className="labelInputBox">
                     <label>Email</label>
-                    <input value = {email} onChange={(e) => {setEmail(e.target.value), setEmailError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}/>
+                    <input placeholder='example@gmail.com' value = {email} onChange={(e) => {setEmail(e.target.value), setEmailError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}/>
                     <p className="errorText">{emailError}</p>
                 </div>
             </div>
             <div className="inputDivBox three">
                 <div className="labelInputBox">
                     <label>Address Line 1 (required)</label>
-                    <input value={address} onChange={(e) => {setAddress(e.target.value), setAddressError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}/>
+                    <input placeholder="12345 Address Road" value={address} onChange={(e) => {setAddress(e.target.value), setAddressError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}/>
                     <p className="errorText">{addressError}</p>
                 </div>
             </div>
@@ -107,12 +124,12 @@ const Contact = () => {
                 <div className="nameBox">
                     <div className="labelInputBox">
                         <label>City (required) </label>
-                        <input value={city} onChange={(e) => {setCity(e.target.value), setCityError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}></input>
+                        <input placeholder="City" value={city} onChange={(e) => {setCity(e.target.value), setCityError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}></input>
                         
                     </div>
                     <div className="labelInputBox">
                         <label>ZIP Code (required)</label>
-                        <input value={zipCode} onChange={(e) => setZipCode(e.target.value)} onBlur={() => commitBlur()} onFocus={() => commitFocus()}></input>
+                        <input placeholder="13590" value={zipCode} onChange={(e) => {setZipCode(e.target.value), setZipCodeError('')}} onBlur={() => commitBlur()} onFocus={() => commitFocus()}></input>
                     </div>
                 </div>
                 <div className="errorBox">
@@ -124,10 +141,14 @@ const Contact = () => {
                         </div>
                     </div>
             </div>
+            {success ? 
+            <h2 style={{marginLeft: 'auto', marginRight: 'auto', fontSize: '2rem'}}>Information Submitted!</h2>
+            :
             <button onClick={submitInquiry} className="bg-sky-500 hover:bg-sky-700">Get A Free Quote</button>
+            }
+            
         </div>
         </div>
-  
     )
 }
 
