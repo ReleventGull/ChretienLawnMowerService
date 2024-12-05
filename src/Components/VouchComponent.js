@@ -38,7 +38,7 @@ const Vouch = ({imageSlideTick}) => {
 
     return (
         <div style={{width: '100%', position: 'relative'}}>
-            <div style={{height: '500px', width: '60rem', borderRadius: '10px', }} className="swiper">
+            <div  className="swiper">
 
             <div className="swiper-wrapper">
 
