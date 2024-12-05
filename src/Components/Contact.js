@@ -78,7 +78,7 @@ const Contact = () => {
                 <div className="nameBox">
                     <div className="labelInputBox">
                         <label>First Name</label>
-                        <input placeholder="John" value={firstName} onChange={(e) => {setFirstName(e.target.value), setfirstNameError('')}}></input>
+                        <input className="inputToFocus" placeholder="John" value={firstName} onChange={(e) => {setFirstName(e.target.value), setfirstNameError('')}}></input>
                     </div>
                     <div className="labelInputBox">
                         <label>Last Name</label>
