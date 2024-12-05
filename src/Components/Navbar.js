@@ -22,11 +22,7 @@ const Navbar = () => {
                             <h3>{item[0].toUpperCase() + item.slice(1) + (item == 'about' || item == 'contact' ? ' Us' : '')}</h3>
                     </Link>
                 )}
-                <Link className="navButton phone">
-                    <img className="phoneLogo" src='images/Phone.png'/>
-                    <h3>337-368-7641
-                    </h3>
-                </Link>
+
   
             </div>
         </div>
