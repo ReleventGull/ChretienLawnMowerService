@@ -5,8 +5,7 @@ const Home = ({imageSlideTick}) => {
     return (
         <div className="routePage home">
            <Vouch imageSlideTick={imageSlideTick}/>
-           <Map />
-           <Landscape />
+           <Map /> 
            <HomeFooter />
         </div>
     )
