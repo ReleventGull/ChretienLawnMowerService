@@ -46,10 +46,22 @@ h3 {
     width: 100%;
     transition: .2s;
     padding-top: 1rem;
+    box-sizing: border-box;
 }
 .contactBoxContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+@media screen and (max-width: 950px) {
+    .contactBoxContainer {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 100%;
+    }
+    .contactBox {
+        max-width: 100%;
+    }
+    
 }
 .contactBox input {
     color: black;
