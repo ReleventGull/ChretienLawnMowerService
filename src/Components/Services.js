@@ -21,7 +21,7 @@ const Service = () => {
     ])
     return (
       <div style={{width: '100%', }} className="serviceBox">
-        <h1>Serivces</h1>
+        <h1>Services</h1>
           <div className="serviceContainer">
             {services.map(service => <ServiceCard service={service}/>)}
         </div>

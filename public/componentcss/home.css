@@ -343,36 +343,47 @@ input:focus ~ .contactBox {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
-  /* Hover effect to scale up the card */
+
   .serviceCard:hover {
     transform: translateY(-10px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
   
-  /* Heading style */
+
   .serviceCard h3 {
     font-size: 20px;
     color: var(--primary-green);
     margin-bottom: 10px;
     font-weight: bold;
   }
-  
-  /* Paragraph style */
+
   .serviceCard p {
     font-size: 16px;
-    color: #555; /* Dark gray for text */
+    color: #555; 
     line-height: 1.5;
   }
   
-  /* Responsive Design for smaller screens */
+
   @media (max-width: 1000px) {
     .serviceCard {
-      width: 48%; /* 2 cards per row on smaller screens */
+      width: 48%; 
     }
   }
   
   @media (max-width: 480px) {
     .serviceCard {
-      width: 100%; /* Stack cards on very small screens */
+      width: 100%; 
     }
+  }
+
+  .serviceBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .serviceBox h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    ;
   }
