@@ -320,3 +320,59 @@ input:focus ~ .contactBox {
     display: flex;
     gap: .5rem;
 }
+
+.serviceContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+    background-color: #f9f9f9; /* Light background for the section */
+  }
+  
+  /* Style for individual service cards */
+  .serviceCard {
+    background-color: #ffffff; /* White background for each card */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    width: 22%; /* Each card takes up 1/4th of the container */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Hover effect to scale up the card */
+  .serviceCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Heading style */
+  .serviceCard h3 {
+    font-size: 20px;
+    color: var(--primary-green);
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  /* Paragraph style */
+  .serviceCard p {
+    font-size: 16px;
+    color: #555; /* Dark gray for text */
+    line-height: 1.5;
+  }
+  
+  /* Responsive Design for smaller screens */
+  @media (max-width: 1000px) {
+    .serviceCard {
+      width: 48%; /* 2 cards per row on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .serviceCard {
+      width: 100%; /* Stack cards on very small screens */
+    }
+  }
