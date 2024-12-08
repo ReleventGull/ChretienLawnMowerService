@@ -230,13 +230,9 @@ input:focus ~ .contactBox {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
+    gap: clamp(1rem, 2.5vw,  3rem)
 }
-@media screen and (max-width: 800px) {
-    .homeFooter {
-        gap: 1rem
-    }
-}
+
 .homeFooter a {
     color: var(--primary-green);
     transition: .2s;
