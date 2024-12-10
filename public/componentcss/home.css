@@ -38,7 +38,7 @@ h3 {
     flex-shrink: 0;
     object-fit: cover;
 }
-
+/**********************************START CONTACT ****/
 .contactBox {
     display: flex;
     justify-content: center;
@@ -47,10 +47,12 @@ h3 {
     transition: .2s;
     padding-top: 1rem;
     box-sizing: border-box;
+    max-width: 100vw;
 }
 .contactBoxContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    max-width: 100%;
 }
 @media screen and (max-width: 950px) {
     .contactBoxContainer {
@@ -92,9 +94,10 @@ input:focus ~ .contactBox {
     padding: 1rem;
     font-weight: bold;
     width: 30rem;
-    max-width: 100%;
+    max-width: 100vw;
     background-color: var(--primary-green);
     border-radius: 10px;
+    box-sizing: border-box;
 }
 
 .caraBox button {
@@ -120,30 +123,6 @@ input:focus ~ .contactBox {
     border-bottom-left-radius: 0;
 }
 
-.landscapeBox {
-    min-width: 100%;
-    max-width: 100%;
-}
-.landscapeBox div h1 {
-    text-align: center;
-    margin-top: 0;
-}
-.landscapeOptions {
-    box-sizing: border-box;
-    display: grid;
-    justify-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 3rem;
-    column-gap: 1rem;
-    padding: 1rem;
-}
-.landscapeOptions img {
-    border: 4px solid #020B0A;
-    border-radius: 10px;
-    width: 20rem;
-    box-shadow: -6px 6px 10px 0;
-}
-
 
 .inputDivBox {
     width: 100%;
@@ -161,7 +140,10 @@ input:focus ~ .contactBox {
    display: grid;
    grid-template-columns: 1fr 1fr;
    width: 100%;
-   gap: .5rem
+   gap: .5rem;
+   max-width: 100%;
+   box-sizing: border-box;
+   max-width: 100%;
 }
 .errorBox {
     width: 100%;
@@ -174,8 +156,19 @@ input:focus ~ .contactBox {
     flex-direction: column;
     gap: .3rem;
     justify-content: space-between;
+    max-width: 100%;
+    box-sizing: border-box;
 }
-
+@media screen and (max-width: 480px) {
+    .caraBox {
+        border-radius: 0;
+        padding: .3rem;
+        box-sizing: border-box;
+        width: auto
+    }
+    
+}
+/**********************************END CONTACT ****/
 .arrowContainer{
     z-index: 2;
     position: absolute;
