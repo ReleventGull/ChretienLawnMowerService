@@ -1,29 +1,26 @@
 import {React, useEffect, useRef} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {Routes, Route} from 'react-router-dom'
-import {Navbar, Home} from './Components/exports'
-
+import {Navbar, Home, MainApp} from './Components/exports'
+import Admin from './AdminComponents/Admin'
 const App = () => {
     const imageSlideTick = useRef(null)
     const loc = useLocation()
     const nav = useNavigate()
+    
     useEffect(() => {
+        console.log(loc)
         if(loc.pathname == '/') {
-            nav('home')
+            nav('/app/home')
         }
     }, [loc.pathname])
+    
     return (
-        <>
-        <Navbar/>
-        <div className="pageWrap">
-            <Routes>
-                <Route path="/home" element={<Home imageSlideTick={imageSlideTick}/>}/>
-            </Routes>
-        </div>
-        </>
-        
-
-
+        <Routes>
+            <Route path="admin/*" element={<Admin />}/>
+            <Route path='app/*'  element={<MainApp />}/>
+        </Routes>
+    
     )
 }
 
