@@ -1,5 +1,6 @@
 import {Route, Routes} from 'react-router-dom'
 import { useEffect } from 'react'
+import { Login } from './adminexports'
 //Folder responsible for validating the token to make sure it still works
 
 const Admin = () => {
@@ -16,9 +17,12 @@ const Admin = () => {
     }, [])
 
     return (
-        <Routes>
-            
-        </Routes>
+        <div className='adminPage'>
+            <Routes>
+                <Route path='login' element={<Login />}/>
+            </Routes>
+        </div>
+
     )
 }
 
