@@ -44,7 +44,6 @@ inquiryRouter.post('/create', async (req, res, next) => {
             body: errorObject
         })
     }else {
-        console.log("I hit here")
         const date = new Date()
         const todayDate = date.getDate()
         const inquiry = await createInquiry({
