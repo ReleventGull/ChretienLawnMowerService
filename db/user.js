@@ -19,6 +19,7 @@ const getUserByUsername = async(username) => {
         const {rows: [user]} = await client.query(`
             SELECT * FROM users WHERE username = $1;
             `, [username])
+            return user
     }catch(error){
         console.error("There was an error getting user by username in DB", error)
         throw error
