@@ -7,7 +7,6 @@ const createUser = async({username, firstName, lastName, password, emailAddress,
             VALUES($1, $2, $3, $4, $5, $6)  
             RETURNING  *;
             `, [username, firstName, lastName, password, emailAddress, phoneNumber])
-            console.log(user)
             return user
     }catch(error) {
         console.error("There was an error creating user", error)
@@ -15,6 +14,19 @@ const createUser = async({username, firstName, lastName, password, emailAddress,
     }
 }
 
+const getUserByUsername = async(username) => {
+    try {
+        const {rows: [user]} = await client.query(`
+            SELECT * FROM users WHERE username = $1;
+            `, [username])
+            return user
+    }catch(error){
+        console.error("There was an error getting user by username in DB", error)
+        throw error
+    }
+}
+
 module.exports = {
-    createUser
+    createUser,
+    getUserByUsername
 }
