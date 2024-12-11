@@ -6,7 +6,7 @@ const {getUserByUsername} = require('../db/user')
 const jwt = require('jsonwebtoken')
 userRouter.post('/login', async(req, res, next) => {
     const {username, password} = req.body
-    //Check first to see if user exists
+    console.log('I hit here', req.body)
     const user = await getUserByUsername(username)
     if(!user) {
         res.send({status: 401, error: true, message: "Inccorrect username or password"})
