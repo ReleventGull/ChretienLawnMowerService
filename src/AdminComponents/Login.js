@@ -1,11 +1,18 @@
 import { useState } from "react"
-
+import { adminLogin } from "../Components/api"
 const Login = () => {
   const [userName, setUsername] = useState()
   const [password, setPassword] = useState()
   const [error, setError] = useState()
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
+        const response = await adminLogin({username: userName, password: password})
+        console.log(response)
+        if(response.error) {
+          setError(response.message)
+        }else if(response.status == 200) {
+          localStorage.setItem("CLSToken", response.token)
+        }
     }
     return (
         <div className="login-container">
@@ -22,7 +29,6 @@ const Login = () => {
                 placeholder="Enter your username"
                 required
               />
-              <p></p>
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
@@ -34,7 +40,7 @@ const Login = () => {
                 placeholder="Enter your password"
                 required
               />
-              <p></p>
+              <p style={{color: 'red'}}>{error}</p>
             </div>
             <button type="submit" className="login-button">
               Log In

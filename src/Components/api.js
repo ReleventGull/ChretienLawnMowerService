@@ -25,3 +25,23 @@ export const createInquiry = async({email, phoneNumber, firstName, lastName, add
         throw error
     }
 }
+
+export const adminLogin = async({username, password}) => {
+    try {
+        const response = await fetch(`${BASE_URL}/user/login`, {
+            method: "POST",
+            headers: {
+                'content-type': "application/json",
+            },  
+            body: JSON.stringify({
+                password: password,
+                username: username
+            })
+        })
+        const data = response.json()
+        return data
+    }catch(error) {
+        console.error("There was an error logining in on the api frontend", error)
+        throw error
+    }
+}
