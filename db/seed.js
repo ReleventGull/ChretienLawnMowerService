@@ -30,6 +30,7 @@ const createTestInquiry = async() => {
         addressTwo: "",
         city: "FuckCity",
         zipCode: 70000,
+        cookie: "1248901812830",
         date: today.getTime()
     })
 }
@@ -39,7 +40,7 @@ const createDb = async() => {
     await dropTables()
     await createTables()
     await createInitialUsers()
-    //await createTestInquiry()
+    await createTestInquiry()
 }
 client.connect()
 
