@@ -39,7 +39,7 @@ const createDb = async() => {
     await dropTables()
     await createTables()
     await createInitialUsers()
-    await createTestInquiry()
+    //await createTestInquiry()
 }
 client.connect()
 
