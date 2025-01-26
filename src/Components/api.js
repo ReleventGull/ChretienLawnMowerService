@@ -3,7 +3,7 @@ const BASE_URL = REACT_APP_BASE_URL
 
 export const validateInquiry = async({email, phoneNumber, firstName, address, city, zipCode}) => {
     try {
-        const response = await fetch(`${BASE_URL}/inquiry/create`, {
+        const response = await fetch(`${BASE_URL}/inquiry/validate`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"  // Add the Content-Type header
@@ -19,12 +19,12 @@ export const validateInquiry = async({email, phoneNumber, firstName, address, ci
         }).then(result => result.json())
         return response
     }catch(error) {
-        console.error("There was an error creating the inquiry on the frontend api.", error)
+        console.error("There was an error validating the inquiry on the front end.", error)
         throw error
     }
 }
 
-export const createInquiry = async({email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode}) => {
+export const createInquiry = async({email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode, cookie, expirationDate}) => {
     try {
         const response = await fetch(`${BASE_URL}/inquiry/create`, {
             method: "POST",
@@ -39,7 +39,9 @@ export const createInquiry = async({email, phoneNumber, firstName, lastName, add
                 address: address,
                 addressTwo: addressTwo,
                 city: city,
-                zipCode: zipCode
+                zipCode: zipCode,
+                cookie: cookie,
+                expirationDate: expirationDate
             })
         }).then(result => result.json())
         return response

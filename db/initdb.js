@@ -23,7 +23,8 @@ const createTables = async() => {
             city VARCHAR(255) NOT NULL,
             "zipCode" VARCHAR(255) NOT NULL,
             cookie VARCHAR(255) NOT NULL,
-            date BIGINT NOT NULL
+            date BIGINT NOT NULL,
+            "expirationDate" BIGINT NOT NULL
             );
             `)
     }catch(error){

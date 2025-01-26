@@ -3,9 +3,9 @@ const inquiryRouter = express.Router()
 const {createInquiry} = require('../db/inquiry')
 const validator = require('validator')
 inquiryRouter.post('/create', async (req, res, next) => {
-        const {email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode, cookie} = req.body
+        const {email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode, cookie, expirationDate} = req.body
         const date = new Date()
-        const todayDate = date.getDate()
+        const todayDate = date.getTime()
         const inquiry = await createInquiry({
             email: email, 
             phoneNumber: phoneNumber,
@@ -16,7 +16,9 @@ inquiryRouter.post('/create', async (req, res, next) => {
             city: city, 
             zipCode: zipCode,
             cookie: cookie,
-            date: todayDate
+            date: todayDate,
+            cookie: cookie,
+            expirationDate: expirationDate
         })
         res.send({status: 200, msg:"Inquiry Created", inquiry: inquiry})
 })
@@ -58,8 +60,8 @@ inquiryRouter.post('/validate', async (req, res, next) => {
         errorObject.zipCodeError = "Please enter a valid zip code,"
     }
     if(error) {
-        res.status(400).send( {
-            error: "There was an error creating inquiry.",
+        res.send( {
+            error: "There was an error validating inquiry.",
             status: 400,
             body: errorObject
         })
