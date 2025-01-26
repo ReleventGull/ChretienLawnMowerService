@@ -3,13 +3,35 @@ const inquiryRouter = express.Router()
 const {createInquiry} = require('../db/inquiry')
 const validator = require('validator')
 inquiryRouter.post('/create', async (req, res, next) => {
+        const {email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode, cookie, expirationDate} = req.body
+        const date = new Date()
+        const todayDate = date.getTime()
+        const inquiry = await createInquiry({
+            email: email, 
+            phoneNumber: phoneNumber,
+            firstName: firstName, 
+            lastName: lastName, 
+            address: address, 
+            addressTwo: addressTwo, 
+            city: city, 
+            zipCode: zipCode,
+            cookie: cookie,
+            date: todayDate,
+            cookie: cookie,
+            expirationDate: expirationDate
+        })
+        res.send({status: 200, msg:"Inquiry Created", inquiry: inquiry})
+})
+
+
+inquiryRouter.post('/validate', async (req, res, next) => {
     //User must send this:
     //email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode, date
     //Required: email OR phone number, firstname, address, city, zipCode, 
     //Date will be automatically computed on the server
     let error = false
     let errorObject = {}
-    const {email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode} = req.body
+    const {email, phoneNumber, firstName, address, city, zipCode} = req.body
     console.log(req.body)
     const checkEmail = validator.isEmail(email)
     const checkPhoneNumber = validator.isMobilePhone(`${phoneNumber}`, 'en-US')
@@ -39,25 +61,12 @@ inquiryRouter.post('/create', async (req, res, next) => {
     }
     if(error) {
         res.send( {
-            error: "There was an error creating inquiry.",
-            status: 404,
+            error: "There was an error validating inquiry.",
+            status: 400,
             body: errorObject
         })
     }else {
-        const date = new Date()
-        const todayDate = date.getDate()
-        const inquiry = await createInquiry({
-            email: email, 
-            phoneNumber: phoneNumber,
-            firstName: firstName, 
-            lastName: lastName, 
-            address: address, 
-            addressTwo: addressTwo, 
-            city: city, 
-            zipCode: zipCode,
-            date: todayDate
-        })
-        res.send({status: 200, msg:"Inquiry Created", inquiry: inquiry})
+        res.send({status: 200, msg:"Information Validated"})
     }
 })
 
