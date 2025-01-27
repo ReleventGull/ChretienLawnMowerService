@@ -29,7 +29,20 @@ const deleteInquiry = async({id}) => {
         throw error
     }
 }
+
+const getInquiryByCookie = async({cookie}) => {
+    try {
+        const {rows: [inquiry]} = await client.query(` 
+            SELECT * FROM inquiry 
+            WHERE cookie=$1;
+            `, [cookie])
+            return inquiry
+    }catch(error) {
+
+    }
+}
 module.exports = {
     createInquiry,
-    deleteInquiry
+    deleteInquiry,
+    getInquiryByCookie
 }
