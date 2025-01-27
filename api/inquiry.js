@@ -1,26 +1,26 @@
 const express = require('express')
 const inquiryRouter = express.Router()
-const {createInquiry} = require('../db/inquiry')
+const {createInquiry, } = require('../db/inquiry')
 const validator = require('validator')
 inquiryRouter.post('/create', async (req, res, next) => {
-        const {email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode, cookie, expirationDate} = req.body
+        const {email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode} = req.body
         const date = new Date()
         const todayDate = date.getTime()
-        const inquiry = await createInquiry({
-            email: email, 
-            phoneNumber: phoneNumber,
-            firstName: firstName, 
-            lastName: lastName, 
-            address: address, 
-            addressTwo: addressTwo, 
-            city: city, 
-            zipCode: zipCode,
-            cookie: cookie,
-            date: todayDate,
-            cookie: cookie,
-            expirationDate: expirationDate
-        })
-        res.send({status: 200, msg:"Inquiry Created", inquiry: inquiry})
+        const expirationDate = todayDate + (30 * 24 * 60 * 60 * 1000)
+            const inquiry = await createInquiry({
+                email: email, 
+                phoneNumber: phoneNumber,
+                firstName: firstName, 
+                lastName: lastName, 
+                address: address, 
+                addressTwo: addressTwo, 
+                city: city, 
+                zipCode: zipCode,
+                date: todayDate,
+                expirationDate: expirationDate
+            })
+            res.send({status: 200, msg:"Inquiry Created"})
+        
 })
 
 

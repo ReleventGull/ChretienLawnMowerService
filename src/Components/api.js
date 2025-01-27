@@ -24,7 +24,7 @@ export const validateInquiry = async({email, phoneNumber, firstName, address, ci
     }
 }
 
-export const createInquiry = async({email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode, cookie, expirationDate}) => {
+export const createInquiry = async({email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode}) => {
     try {
         const response = await fetch(`${BASE_URL}/inquiry/create`, {
             method: "POST",
@@ -40,8 +40,6 @@ export const createInquiry = async({email, phoneNumber, firstName, lastName, add
                 addressTwo: addressTwo,
                 city: city,
                 zipCode: zipCode,
-                cookie: cookie,
-                expirationDate: expirationDate
             })
         }).then(result => result.json())
         return response

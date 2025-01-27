@@ -2,7 +2,7 @@ const {dropTables, createTables} = require('./initdb')
 const client  = require('./index')
 const bcrypt = require('bcrypt')
 const {createUser} = require('./user')
-const {createInquiry, deleteInquiry, getInquiryByCookie, updateInquiry} = require('./inquiry')
+const {createInquiry, deleteInquiry,} = require('./inquiry')
 
 const createInitialUsers = async() => {
     const salts = 10
@@ -30,24 +30,9 @@ const createTestInquiry = async() => {
         addressTwo: "",
         city: "FuckCity",
         zipCode: 70000,
-        cookie: "1248901812830",
         date: today.getTime(),
         expirationDate: today.getTime() + (7 * 24 * 60 * 60 * 1000)
     })
-    console.log("BEFORE UPDATING", inquiry1)
-    const inquiryByCookie = await getInquiryByCookie({cookie: inquiry1.cookie})
-    const updatedInquiry = await updateInquiry({
-        id: inquiryByCookie.id,
-        phoneNumber: "3373687641",
-        lastName: "Chretien",
-        address: "RANDOM ADDRESS",
-        addressTwo: "LOT 100",
-        city: "FUCK TOWN",
-        zipCode: "99910",
-        date: (new Date()).getTime(),
-        expirationDate: 182409182409128
-    })
-    console.log("UPDATED INQUIRY", updatedInquiry)
 }
 
 const createDb = async() => {
