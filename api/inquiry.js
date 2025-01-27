@@ -1,26 +1,46 @@
 const express = require('express')
 const inquiryRouter = express.Router()
-const {createInquiry} = require('../db/inquiry')
+const {createInquiry, getInquiryByCookie, updateInquiry} = require('../db/inquiry')
 const validator = require('validator')
 inquiryRouter.post('/create', async (req, res, next) => {
-        const {email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode, cookie, expirationDate} = req.body
+        const {email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode, cookie} = req.body
         const date = new Date()
         const todayDate = date.getTime()
-        const inquiry = await createInquiry({
-            email: email, 
-            phoneNumber: phoneNumber,
-            firstName: firstName, 
-            lastName: lastName, 
-            address: address, 
-            addressTwo: addressTwo, 
-            city: city, 
-            zipCode: zipCode,
-            cookie: cookie,
-            date: todayDate,
-            cookie: cookie,
-            expirationDate: expirationDate
-        })
-        res.send({status: 200, msg:"Inquiry Created", inquiry: inquiry})
+        const expirationDate = todayDate + (30 * 24 * 60 * 60 * 1000)
+        //First check to see if there is a inquiry that exists
+        const checkInquiry = await getInquiryByCookie({cookie: cookie})
+        if (checkInquiry) {
+            console.log("Updated it")
+            const updatedInquiry = await updateInquiry({
+                id: checkInquiry.id, 
+                phoneNumber: phoneNumber,
+                lastName: lastName,
+                address: address,
+                addressTwo: addressTwo,
+                city: city,
+                zipCode: zipCode,
+                date: todayDate,
+                expirationDate: expirationDate
+            })
+            res.send({status: 200, msg:"Inquiry Updated"})
+        }else {
+            const inquiry = await createInquiry({
+                email: email, 
+                phoneNumber: phoneNumber,
+                firstName: firstName, 
+                lastName: lastName, 
+                address: address, 
+                addressTwo: addressTwo, 
+                city: city, 
+                zipCode: zipCode,
+                cookie: cookie,
+                date: todayDate,
+                cookie: cookie,
+                expirationDate: expirationDate
+            })
+            res.send({status: 200, msg:"Inquiry Created"})
+
+        }
 })
 
 

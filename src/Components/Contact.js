@@ -28,10 +28,9 @@ const Contact = () => {
         console.log(new Date(date.toUTCString()).getTime())
         console.log(date.toUTCString())
         document.cookie = name + "=" + value + ";" + expires + ";path=/";
-        return {cookie: document.cookie, expirationDate: date.getTime()}
+        return {cookie: document.cookie}
     }
     
-    // Set a cookie that lasts for 30 days
 
     
     const submitInquiry = async() => {
@@ -64,7 +63,7 @@ const Contact = () => {
                 setZipCodeError(response.body.zipCodeError)
             }
         }else {
-            const {cookie, expirationDate} = setCookie("username", `${email+firstName}`, 7);
+            const {cookie} = setCookie("username", `${email+firstName}`, 30);
             const response = await createInquiry
             ({
                 email: email, 
@@ -76,7 +75,6 @@ const Contact = () => {
                 city: city,
                 zipCode: zipCode,
                 cookie: cookie,
-                expirationDate: expirationDate
             })
             setSuccess(true)
             setFirstName('')

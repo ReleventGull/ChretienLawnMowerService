@@ -1,0 +1,6 @@
+ id |          email          | phoneNumber | firstName | lastName |           address            | addressTwo |   city    | zipCode |                cookie                 |     date      | expirationDate  
+----+-------------------------+-------------+-----------+----------+------------------------------+------------+-----------+---------+---------------------------------------+---------------+-----------------
+  1 | test@exmaple.com        | 3373687641  | Carl      | Chretien | RANDOM ADDRESS               | LOT 100    | FUCK TOWN | 99910   | 1248901812830                         | 1738020181203 | 182409182409128
+  2 | jaronchretien@yahoo.com | 3373687641  | Jaron     | Chretien | 2064 Jeff Davis Academy Road | Lot 10     | Jennings  | 70546   | username=jaronchretien@yahoo.comJaron | 1738020243666 |   1740612243666
+(2 rows)
+
