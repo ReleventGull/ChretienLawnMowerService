@@ -2,7 +2,7 @@ const {dropTables, createTables} = require('./initdb')
 const client  = require('./index')
 const bcrypt = require('bcrypt')
 const {createUser} = require('./user')
-const {createInquiry, deleteInquiry} = require('./inquiry')
+const {createInquiry, deleteInquiry, getInquiryByCookie} = require('./inquiry')
 
 const createInitialUsers = async() => {
     const salts = 10
@@ -34,8 +34,9 @@ const createTestInquiry = async() => {
         date: today.getTime(),
         expirationDate: today.getTime() + (7 * 24 * 60 * 60 * 1000)
     })
-    const deletedInquiry = await deleteInquiry({id: inquiry1.id})
-    console.log('Deleted Inquiry', deletedInquiry)
+    const inquiryByCookie = await getInquiryByCookie({cookie: inquiry1.cookie})
+    console.log("Inquiry by cookie", inquiryByCookie)
+    //const deletedInquiry = await deleteInquiry({id: inquiry1.id})
 }
 
 const createDb = async() => {
