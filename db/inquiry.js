@@ -38,11 +38,28 @@ const getInquiryByCookie = async({cookie}) => {
             `, [cookie])
             return inquiry
     }catch(error) {
+        console.error("There was an error getting the inquiry by the cookie", error)
+        throw error
+    }
+}
 
+const updateInquiry = async({id, phoneNumber, lastName, address, addressTwo, city, zipCode, date, expirationDate}) => {
+    try {
+        const {rows: [inquiry]} = await client.query(`
+            UPDATE inquiry
+            SET "phoneNumber"=$1, "lastName"=$2, address=$3, "addressTwo"=$4, city=$5, "zipCode"=$6, date=$7, "expirationDate"=$8
+            WHERE id=$9 
+            RETURNING *;
+            `, [phoneNumber, lastName, address, addressTwo, city, zipCode, date, expirationDate, id])
+            return inquiry
+    }catch(error){
+        console.error("There was an error updating inquiry", error )
+        throw error
     }
 }
 module.exports = {
     createInquiry,
     deleteInquiry,
-    getInquiryByCookie
+    getInquiryByCookie,
+    updateInquiry
 }
