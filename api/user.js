@@ -2,12 +2,11 @@ const express = require('express')
 const bcrypt = require('bcrypt')
 const userRouter = express.Router()
 const {JWT_SECRET} = process.env
-const {getUserByUsername} = require('../db/user')
+const {getUserByUsername, getUserById} = require('../db/user')
 const jwt = require('jsonwebtoken')
 
 userRouter.post('/login', async(req, res, next) => {
     const {username, password} = req.body
-    console.log('I hit here', req.body)
     const user = await getUserByUsername(username)
     if(!user) {
         res.send({status: 401, error: true, message: "Inccorrect username or password"})
@@ -24,6 +23,8 @@ userRouter.post('/login', async(req, res, next) => {
 
 userRouter.post('/me', async(req, res, next) => {
     const userId = req.user
-    
+    const user = await getUserById(userId)
+    console.log("USER HERE BRO", user)
+    res.send({status: 200, user: user})
 })
 module.exports = userRouter
