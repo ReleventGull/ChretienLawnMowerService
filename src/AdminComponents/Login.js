@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { adminLogin } from "../Components/api"
+import { useNavigate } from "react-router-dom"
 const Login = () => {
   const [userName, setUsername] = useState()
   const [password, setPassword] = useState()
   const [error, setError] = useState()
+  const navigate = useNavigate()
     const handleSubmit = async(e) => {
         e.preventDefault()
         const response = await adminLogin({username: userName, password: password})
@@ -11,7 +13,10 @@ const Login = () => {
         if(response.error) {
           setError(response.message)
         }else if(response.status == 200) {
+          console.log("SETTING")
           localStorage.setItem("CLSToken", response.token)
+          console.log("SETTING")
+          navigate('/admin/dashboard')
         }
     }
     return (

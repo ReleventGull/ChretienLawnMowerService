@@ -1,13 +1,15 @@
 import {Route, Routes} from 'react-router-dom'
 import { useEffect } from 'react'
-import { Login } from './adminexports'
+import { useNavigate } from 'react-router-dom'
+import { Login, Dashboard } from './adminexports'
 //Folder responsible for validating the token to make sure it still works
 
 const Admin = () => {
+    const navigate = useNavigate()
     useEffect(() => {
         const token = localStorage.getItem("CLSToken")
         if(!token) {
-            //redirect to login
+            navigate('/admin/login')
         }else {
             //get token valiation
             //if not valid, delete token and redirect to login
@@ -20,6 +22,8 @@ const Admin = () => {
         <div className='adminPage'>
             <Routes>
                 <Route path='login' element={<Login />}/>
+                <Route path='dashboard' element={<Dashboard/>}/>
+
             </Routes>
         </div>
 
