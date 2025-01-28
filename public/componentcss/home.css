@@ -203,7 +203,9 @@ input:focus ~ .contactBox {
 }
 .visualMapContainer {
     padding: 1rem;
-    width: 80%;
+    width: 1000px;
+    max-width: 80%;
+
 }
 
 #map {
@@ -211,6 +213,7 @@ input:focus ~ .contactBox {
     height: 500px;
     min-height: 100px;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 
 /***********************FOOTER************************/
