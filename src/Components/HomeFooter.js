@@ -14,7 +14,7 @@ const HomeFooter = () => {
                 <Link>Privacy</Link>
             </footer>
             <div className='footerLogoBox'>
-                <img className='footerLogo' src='images/Logo.png'/>
+                <img className='footerLogo' src='/images/Logo.png'/>
                 <a>© 2024 Chretien LLC</a>
             </div>
         </div>
