@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { adminLogin } from "../Components/api"
+import { adminLogin } from "./adminapi"
 import { useNavigate } from "react-router-dom"
 const Login = () => {
   const [userName, setUsername] = useState()

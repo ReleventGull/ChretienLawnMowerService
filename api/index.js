@@ -11,7 +11,8 @@ apiRouter.use(async(req, res, next) => {
         try {
             let tok = auth.split(' ')
             const [,token] = tok
-            const {id} = jwt.verify(token, JWT_SECRET)
+            const verified = jwt.verify(token, JWT_SECRET)
+            req.user = verified
             next()
         }catch(error) {
             console.error("Token invalid", error) 

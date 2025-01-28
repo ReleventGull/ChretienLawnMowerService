@@ -1,20 +1,28 @@
 import {Route, Routes} from 'react-router-dom'
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { Login, Dashboard } from './adminexports'
+import { getAdmin } from './adminapi'
 //Folder responsible for validating the token to make sure it still works
 
 const Admin = () => {
     const navigate = useNavigate()
+    const loc = useLocation()
+    const checkAdmin = async(token) => {
+        console.log(loc)
+        const admin = await getAdmin({token: token})
+        if(admin.status == 200 && (loc.pathname=='/admin/login' || loc.pathname=='/admin' )){
+            navigate('/admin/dashboard')
+        }else if(admin.status !== 200){
+            navigate('/admin/login')
+        }
+    }
     useEffect(() => {
         const token = localStorage.getItem("CLSToken")
         if(!token) {
             navigate('/admin/login')
         }else {
-            //get token valiation
-            //if not valid, delete token and redirect to login
-            //if valid, check if user is on login page or empty page
-            //If on empty page, redirect to home.
+            checkAdmin(token)
         }    
     }, [])
 
