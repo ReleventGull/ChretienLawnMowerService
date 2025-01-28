@@ -4,6 +4,7 @@ const userRouter = express.Router()
 const {JWT_SECRET} = process.env
 const {getUserByUsername} = require('../db/user')
 const jwt = require('jsonwebtoken')
+
 userRouter.post('/login', async(req, res, next) => {
     const {username, password} = req.body
     console.log('I hit here', req.body)
@@ -21,4 +22,8 @@ userRouter.post('/login', async(req, res, next) => {
     }
 })
 
+userRouter.post('/me', async(req, res, next) => {
+    const userId = req.user
+    
+})
 module.exports = userRouter
