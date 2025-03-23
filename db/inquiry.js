@@ -11,7 +11,7 @@ const createInquiry = async ({email, phoneNumber, firstName, lastName, address, 
             console.log("After creation")
             return inquiry
     }catch(error) {
-        console.error("There was an error creating the inquiry", error)
+        console.error("There was an error creating the inquiry in inquiry/db", error)
         throw error
     }
 }
@@ -25,13 +25,28 @@ const deleteInquiry = async({id}) => {
             `, [id])
             return inquiry
     }catch(error) {
-        console.error("There was an error deleting the inquiry in the database", error)
+        console.error("There was an error deleting the inquiry in the inquiry/db", error)
         throw error
     }
 }
 
+const getInquiriesByStatus = async({status}) => {
+    try {
+        const {rows: inquries} = await client.query(`
+            GET * FROM 
+            inquiry 
+            WHERE status = $1;
+            `, [status])
+            return inquries
+    }catch(error) {
+        console.error("There was an error getting inquries by status in inquiry/db")
+    }
+}
+
+
 module.exports = {
     createInquiry,
     deleteInquiry,
+    getInquiriesByStatus
 
 }
