@@ -31,8 +31,7 @@ const createTestInquiry = async() => {
         city: "FuckCity",
         zipCode: 70000,
         date: today.getTime(),
-        expirationDate: today.getTime() + (7 * 24 * 60 * 60 * 1000)
-    })
+        })
 }
 
 const createDb = async() => {

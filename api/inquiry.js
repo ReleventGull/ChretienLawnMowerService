@@ -6,8 +6,7 @@ inquiryRouter.post('/create', async (req, res, next) => {
         const {email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode} = req.body
         const date = new Date()
         const todayDate = date.getTime()
-        const expirationDate = todayDate + (30 * 24 * 60 * 60 * 1000)
-            const inquiry = await createInquiry({
+        const inquiry = await createInquiry({
                 email: email, 
                 phoneNumber: phoneNumber,
                 firstName: firstName, 
@@ -17,7 +16,6 @@ inquiryRouter.post('/create', async (req, res, next) => {
                 city: city, 
                 zipCode: zipCode,
                 date: todayDate,
-                expirationDate: expirationDate
             })
             res.send({status: 200, msg:"Inquiry Created"})
         
