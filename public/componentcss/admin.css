@@ -1,3 +1,7 @@
+:root {
+  --navbar-background: #0d0d0d
+}
+
 .adminPage {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -79,3 +83,45 @@
   }
 
   /**************************** END LOGIN *********************/
+
+  /**************************** DASHBOARD *********************/
+  .adminDashboardContainer {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .dashboardComponentContainer {
+    flex-grow: 1;
+    height: 100%;
+  }
+    
+  /**************************** END DASHBOARD *********************/
+  
+  
+  /**************************** NAVBAR *********************/
+  .adminNavbar {
+    width: 180px;
+    height: 100%;;
+    background-color: var(--navbar-background);
+  }
+
+  .navbarLinkContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .adminNavLink {
+    color: white;
+    padding: .6rem .8rem .6rem .8rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .adminNavLink.active {
+    ::aftertre
+    
+  }
+  /**************************** END NAVBAR *********************/

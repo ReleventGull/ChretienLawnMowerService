@@ -30,7 +30,7 @@ const Admin = () => {
         <div className='adminPage'>
             <Routes>
                 <Route path='login' element={<Login />}/>
-                <Route path='dashboard' element={<Dashboard/>}/>
+                <Route path='dashboard*' element={<Dashboard/>}/>
 
             </Routes>
         </div>
