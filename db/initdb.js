@@ -22,7 +22,8 @@ const createTables = async() => {
             "addressTwo" VARCHAR(255),
             city VARCHAR(255) NOT NULL,
             "zipCode" VARCHAR(255) NOT NULL,
-            date BIGINT NOT NULL
+            date BIGINT NOT NULL,
+            status VARCHAR(255) DEFAULT 'Open'
             );
             `)
     }catch(error){
