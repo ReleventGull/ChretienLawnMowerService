@@ -6,7 +6,7 @@ const svgObject = {
     SVGColor: '#FFFFFF',
     SVGColorSelect: '#0d0d0d'
 }
-const Navbar = ({location}) => {
+const Navbar = ({setLocation, location}) => {
     return (
         <div className="adminNavbar">
             <div className='navbarLinkContainer'>
@@ -14,7 +14,7 @@ const Navbar = ({location}) => {
                     <HomeSVG svgObject={svgObject}/>
                     <div>Home</div>
                 </Link>
-                <Link to='inquiries' className={`adminNavLink ${location === '/admin/dashboard/inqiries' ? 'active' : ''}`}>
+                <Link  to='inquiries' className={`adminNavLink ${location === '/admin/dashboard/inquiries' ? 'active' : ''}`}>
                     <EnvelopeSVG svgObject={svgObject}/>
                     <div>Inquiries</div>
                 </Link>

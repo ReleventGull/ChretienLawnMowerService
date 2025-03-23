@@ -100,6 +100,14 @@
   
   
   /**************************** NAVBAR *********************/
+  @keyframes growWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 1rem;
+    }
+}
   .adminNavbar {
     width: 180px;
     height: 100%;;
@@ -118,10 +126,39 @@
     flex-direction: row;
     align-items: center;
     gap: 1rem;
+    position: relative;
+    transition: .2s;
   }
+.adminNavLink.active::after {
+  content: '';
+  position: absolute;
+  background-color: white;
+  width: 4px;
+  height: 100%;
+  top: 0;
+  right: 0;
+}
+.adminNavLink::after {
+  transition: .2s;
+  content: '';
+  position: absolute;
+  background-color: white;
+  width: 0px;
+  height: 100%;
+  top: 0;
+  right: 0;
+}
+.adminNavLink:hover::after {
+  transition: .2s;
+  content: '';
+  position: absolute;
+  background-color: white;
+  width: 1rem;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 100%;
+  top: 0;
+  right: 0;
+}
 
-  .adminNavLink.active {
-    ::aftertre
-    
-  }
   /**************************** END NAVBAR *********************/

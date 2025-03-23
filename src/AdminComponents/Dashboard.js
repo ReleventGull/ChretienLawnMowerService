@@ -11,10 +11,11 @@ const Dashboard = () => {
             navigate('home')
         }
         setLocation(loc.pathname)
-    }, [])
+    }, [loc.pathname])
+
     return(
         <div className="adminDashboardContainer">
-            <Navbar location={location}/>
+            <Navbar setLocation={setLocation} location={location}/>
             <div className='dashboardComponentContainer'>
                 <Routes>
                     <Route path='home' />
