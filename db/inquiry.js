@@ -88,5 +88,5 @@ module.exports = {
     getInquiriesByStatus,
     getCountOfInquiriesByStatus,
     getAllInquries,
-    deleteInquiry
+    deleteInquiryById
 }
