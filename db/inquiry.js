@@ -56,6 +56,17 @@ const getCountOfInquiriesByStatus = async({status}) => {
     }
 }
 
+const getAllInquries = async() => {
+    try {
+        const {rows: [inquries]} = await client.query(`
+            SELECT * FROM inquiry;
+            `)
+            return inquries
+    }catch(error) {
+        console.error("There was an error getting all inquires in db/inquiry", error)
+        throw error
+    }
+}
 
 module.exports = {
     createInquiry,
