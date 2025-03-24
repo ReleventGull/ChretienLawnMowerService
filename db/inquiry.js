@@ -33,13 +33,13 @@ const deleteInquiry = async({id}) => {
 const getInquiriesByStatus = async({status}) => {
     try {
         const {rows: inquries} = await client.query(`
-            GET * FROM 
+            SELECT * FROM  
             inquiry 
             WHERE status = $1;
             `, [status])
             return inquries
     }catch(error) {
-        console.error("There was an error getting inquries by status in inquiry/db")
+        console.error("There was an error getting inquries by status in inquiry/db", error)
     }
 }
 
