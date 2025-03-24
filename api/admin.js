@@ -2,14 +2,14 @@ const express = require('express')
 const adminRouter = express.Router();
 const { getInquiriesByStatus, deleteInquiryById, getCountOfInquiriesByStatus, getAllInquries, deleteInquiry } = require('../db/inquiry')
 
-adminRouter.post('/getInquiryByStatus/:status', async (req, res, next) => {
+adminRouter.post('/inquiryByStatus/:status', async (req, res, next) => {
     const {status} = req.params
     console.log("STATUS", status)
     const inquries = await getInquiriesByStatus({status: status})
     res.send({inquries: inquries})
 })
 
-adminRouter.post('/getInquryCounts', async (req, res, next) => {
+adminRouter.get('/inquiryCounts', async (req, res, next) => {
     const openInquiries = await getCountOfInquiriesByStatus({status: 'Open'})
     const completedInquiries = await getCountOfInquiriesByStatus({status: 'Completed'})
     const nonServicableInquries = await getCountOfInquiriesByStatus({status: 'Non-Servicable'})

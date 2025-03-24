@@ -37,3 +37,19 @@ export const getAdmin = async({token}) => {
         throw error
     }
 }
+
+export const getInquiryCounts = async({token}) => {
+    console.log("TOKEN IN API", token)
+    try {
+        const response = await fetch(`${BASE_URL}/admin/inquiryCounts`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        const data = response.json()
+        return data
+    }catch(error) {
+        console.error("There was an error getting inquirycounts", error)
+        throw error
+    }
+}
