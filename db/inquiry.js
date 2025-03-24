@@ -68,10 +68,25 @@ const getAllInquries = async() => {
     }
 }
 
+const deleteInquiryById = async({id}) => {
+    try {
+        const {rows: [inquiry]} = await client.query(`
+            DELETE from inquiry 
+            WHERE id=$1
+            RETURNING *;
+            `, [id])
+            return inquiry
+    }catch(error) {
+        console.error("There was an error deleting the inquiry by ID in db/inquiry", error)
+        throw error
+    }
+}
+
 module.exports = {
     createInquiry,
     deleteInquiry,
     getInquiriesByStatus,
     getCountOfInquiriesByStatus,
-    getAllInquries
+    getAllInquries,
+    deleteInquiry
 }
