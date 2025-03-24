@@ -43,10 +43,24 @@ const getInquiriesByStatus = async({status}) => {
     }
 }
 
+const getCountOfInquiriesByStatus = async({status}) => {
+    try {
+        const {rows: [count]} = await client.query(`
+            SELECT COUNT(*) FROM  
+            inquiry 
+            WHERE status = $1;
+            `, [status])
+            return count.count
+    }catch(error) {
+        console.error("There was an error getting inquries by status in inquiry/db", error)
+    }
+}
+
 
 module.exports = {
     createInquiry,
     deleteInquiry,
-    getInquiriesByStatus
+    getInquiriesByStatus,
+    getCountOfInquiriesByStatus
 
 }
