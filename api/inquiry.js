@@ -1,7 +1,6 @@
 const express = require('express')
 const inquiryRouter = express.Router()
 const {createInquiry, } = require('../db/inquiry')
-const validator = require('validator')
 inquiryRouter.post('/create', async (req, res, next) => {
         const {email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode} = req.body
         const date = new Date()
@@ -67,5 +66,6 @@ inquiryRouter.post('/validate', async (req, res, next) => {
         res.send({status: 200, msg:"Information Validated"})
     }
 })
+
 
 module.exports = inquiryRouter

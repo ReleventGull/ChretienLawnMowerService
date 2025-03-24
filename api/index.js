@@ -24,7 +24,8 @@ apiRouter.use(async(req, res, next) => {
 })
 const inquiryRouter = require('./inquiry')
 const userRouter = require('./user')
-
+const adminRouter = require('./admin')
 apiRouter.use('/inquiry', inquiryRouter)
 apiRouter.use('/user', userRouter)
+apiRouter.use('/admin', adminRouter)
 module.exports = apiRouter

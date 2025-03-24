@@ -13,6 +13,7 @@ userRouter.post('/login', async(req, res, next) => {
         return
     }
     //If exists, will verify the password matches
+    console.log(username, password)
     const checkBcryptPasswords = await bcrypt.compare(password, user.password)
     if(checkBcryptPasswords) {
         res.send({status: 200, message: `Welcome ${username}`, token: `${jwt.sign(user.id, JWT_SECRET)}`})
