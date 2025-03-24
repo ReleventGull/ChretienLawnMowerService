@@ -58,7 +58,7 @@ const getCountOfInquiriesByStatus = async({status}) => {
 
 const getAllInquries = async() => {
     try {
-        const {rows: [inquries]} = await client.query(`
+        const {rows: inquries} = await client.query(`
             SELECT * FROM inquiry;
             `)
             return inquries
@@ -72,6 +72,6 @@ module.exports = {
     createInquiry,
     deleteInquiry,
     getInquiriesByStatus,
-    getCountOfInquiriesByStatus
-
+    getCountOfInquiriesByStatus,
+    getAllInquries
 }

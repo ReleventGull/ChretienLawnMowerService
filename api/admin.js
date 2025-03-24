@@ -1,6 +1,6 @@
 const express = require('express')
 const adminRouter = express.Router();
-const { getInquiriesByStatus, getCountOfInquiriesByStatus } = require('../db/inquiry')
+const { getInquiriesByStatus, getCountOfInquiriesByStatus, getAllInquries } = require('../db/inquiry')
 
 adminRouter.post('/getInquiryByStatus/:status', async (req, res, next) => {
     const {status} = req.params
@@ -18,6 +18,11 @@ adminRouter.post('/getInquryCounts', async (req, res, next) => {
     completedInquiriesCount: completedInquiries,
     nonServicableInquriesCount: nonServicableInquries
     })
+})
+
+adminRouter.get('/inquiries', async (req, res, next) => {
+    const allInquiries = await getAllInquries()
+    res.send({inquiries: allInquiries});
 })
 
 module.exports = adminRouter
