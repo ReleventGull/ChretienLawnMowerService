@@ -1,5 +1,5 @@
 
-import  { Navbar, Home } from './adminexports'
+import  { Navbar, Home, Inquiry } from './adminexports'
 import { useEffect, useState } from 'react'
 import { Route, useLocation, useNavigate, Routes } from 'react-router-dom'
 const Dashboard = () => {
@@ -19,6 +19,7 @@ const Dashboard = () => {
             <div className='dashboardComponentContainer'>
                 <Routes>
                     <Route path='home' element={<Home />}/>
+                    <Route path='inquiries' element={<Inquiry />}/>
                 </Routes>
             </div>
         </div>
