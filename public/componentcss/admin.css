@@ -244,5 +244,20 @@
     display: flex;
     gap: 1rem;
   }
+  .inquiryInputContainer {
+    position: relative;
+    display: flex;
+    background-color: white;
+    padding: .4rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .inquiryInputContainer input {
+    margin-left: .4rem;
+    outline: 0;
+    color: black
+  }
+
+  
   
   /**************************** END INQUIRY *********************/
