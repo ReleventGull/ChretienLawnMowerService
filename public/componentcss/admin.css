@@ -257,7 +257,10 @@
     outline: 0;
     color: black
   }
-
+  .optionDropdown {
+    color: black;
+    outline: 0
+  }
   
   
   /**************************** END INQUIRY *********************/
