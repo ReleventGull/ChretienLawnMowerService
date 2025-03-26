@@ -1,3 +1,4 @@
+
 const {REACT_APP_BASE_URL = 'http://localhost:4000/api' } = process.env
 const BASE_URL = REACT_APP_BASE_URL
 
@@ -50,6 +51,21 @@ export const getInquiryCounts = async({token}) => {
         return data
     }catch(error) {
         console.error("There was an error getting inquirycounts", error)
+        throw error
+    }
+}
+
+export const getInquiriesByStatus = async({token, status}) => {
+     try {
+        const response = await fetch(`${BASE_URL}/admin/inquiryByStatus/${status}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        const data = await response.json()
+        return data
+    }catch(error) {
+        console.error("There was an error getting the inquiries by status in admin/adminapi", error)
         throw error
     }
 }
