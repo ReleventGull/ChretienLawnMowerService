@@ -20,7 +20,7 @@ const Inquiry = () => {
 
     useEffect(() => {
         fetchInqurieies()
-    }, [])
+    }, [currentOption])
 
     return (
     <div className="inquiryHomeContainer">
@@ -29,7 +29,7 @@ const Inquiry = () => {
                 <SearchSVG svgObject={svgObject}/>
                 <input placeholder='Search'></input>
             </div>
-            <SelectOption />
+            <SelectOption setCurrentOption={setCurrentOption}/>
         </div>
         <div className='inquiryDisplayContainer'>
             <div className='inquiryDetails'>
