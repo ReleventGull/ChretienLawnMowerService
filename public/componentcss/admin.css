@@ -273,7 +273,12 @@
     flex: 1;
     color: black;
     font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    overflow: auto;
   }
+
   .inquiryDetails {
     padding: .4rem;
     box-sizing: border-box;
@@ -294,7 +299,9 @@
     font-weight: 700;
     font-size: 1.6rem;
   }
-
+  .inquiryList {
+    overflow-y: auto;
+  }
   .inquiryItemContainer:hover {
     background: #f9f9f9;
     cursor: pointer;
