@@ -1,9 +1,9 @@
 
 
-const InquiryItem = ({inquiry}) => {
+const InquiryItem = ({inquiry, setSelectedInquiry}) => {
     console.log(inquiry)
     return (
-        <div className="inquiryItemContainer">
+        <div onClick={() => setSelectedInquiry(inquiry)} className="inquiryItemContainer">
             <div>
                 {inquiry.firstName}
             </div>
