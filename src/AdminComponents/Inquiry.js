@@ -1,5 +1,5 @@
 import { SearchSVG } from './AdmingSVGComponents/adminsvgexports'
-import { SelectOption, InquiryItem } from './adminexports'
+import { SelectOption, InquiryItem, InquiryModal } from './adminexports'
 import { useEffect, useState } from 'react'
 import { getInquiriesByStatus } from './adminapi'
 
@@ -10,7 +10,7 @@ const svgObject = {
 const Inquiry = () => {
     const [currentOption, setCurrentOption] = useState('All')
     const [currentInquiries, setCurrentInquiries] = useState([])
-    
+    const [ selectedInquiry, setSelectedInquiry ] = useState(null)
     const fetchInqurieies = async() => {
         const token = localStorage.getItem("CLSToken")
         const fetchedInquiries = await getInquiriesByStatus({token: token, status: currentOption})
@@ -24,6 +24,7 @@ const Inquiry = () => {
 
     return (
     <div className="inquiryHomeContainer">
+        {selectedInquiry ? <InquiryModal selectedInquiry={selectedInquiry} setSelectedInquiry={setSelectedInquiry}/> : null}
         <div className="inquirySearchContainer">
             <div className="inquiryInputContainer">
                 <SearchSVG svgObject={svgObject}/>
@@ -49,7 +50,7 @@ const Inquiry = () => {
             <div className='inquiryList'>
                 {
                     currentInquiries.map(inquiry =>
-                        <InquiryItem inquiry={inquiry}/>
+                        <InquiryItem setSelectedInquiry={setSelectedInquiry} inquiry={inquiry}/>
                     )
                 }
             </div>
