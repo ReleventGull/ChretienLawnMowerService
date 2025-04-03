@@ -14,7 +14,8 @@ const InquiryItem = ({inquiry, setSelectedInquiry}) => {
                 {inquiry.address}
             </div>
             <div>
-                {inquiry.status}
+                <p className={`displayStatus ${inquiry.status}`}> {inquiry.status}</p>
+               
             </div>
         </div>
     )
