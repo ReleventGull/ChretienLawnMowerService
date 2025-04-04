@@ -1,7 +1,7 @@
 import { SearchSVG } from './AdmingSVGComponents/adminsvgexports'
 import { SelectOption, InquiryItem, InquiryModal } from './adminexports'
 import { useEffect, useState } from 'react'
-import { getInquiriesByStatus } from './adminapi'
+import { getInquiriesByStatus, changeInquiryStatus } from './adminapi'
 
 const svgObject = {
     height: '1.5rem',
@@ -10,12 +10,31 @@ const svgObject = {
 const Inquiry = () => {
     const [currentOption, setCurrentOption] = useState('All')
     const [currentInquiries, setCurrentInquiries] = useState([])
-    const [ selectedInquiry, setSelectedInquiry ] = useState(null)
+    const [selectedInquiry, setSelectedInquiry] = useState(null)
+    
     const fetchInqurieies = async() => {
         const token = localStorage.getItem("CLSToken")
         const fetchedInquiries = await getInquiriesByStatus({token: token, status: currentOption})
-        console.log("FD", fetchedInquiries)
         setCurrentInquiries(fetchedInquiries.inquiries)
+    }
+
+    const updateInquiry = async({status}) => {
+        const token = localStorage.getItem("CLSToken")
+        const response = await changeInquiryStatus({token: token, status: status, id: selectedInquiry.id})
+        setSelectedInquiry(response.inquiry)
+        if(currentOption === 'All' || currentOption === response.inquiry.status) {
+            for(let i = 0; i < currentInquiries.length; i++) {
+                if(currentInquiries[i].id === response.inquiry.id) {
+                    currentInquiries[i].status = response.inquiry.status
+                }
+            }
+        }else {
+            for(let i = 0; i < currentInquiries.length; i++) {
+                if(currentInquiries[i].id === response.inquiry.id) {
+                    currentInquiries.splice(i, i+1)
+                }
+            }
+        }
     }
 
     useEffect(() => {
@@ -24,7 +43,7 @@ const Inquiry = () => {
 
     return (
     <div className="inquiryHomeContainer">
-        {selectedInquiry ? <InquiryModal selectedInquiry={selectedInquiry} setSelectedInquiry={setSelectedInquiry}/> : null}
+        {selectedInquiry ? <InquiryModal updateInquiry={updateInquiry} selectedInquiry={selectedInquiry} setSelectedInquiry={setSelectedInquiry}/> : null}
         <div className="inquirySearchContainer">
             <div className="inquiryInputContainer">
                 <SearchSVG svgObject={svgObject}/>

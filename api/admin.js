@@ -1,6 +1,6 @@
 const express = require('express')
 const adminRouter = express.Router();
-const { getInquiriesByStatus, deleteInquiryById, getCountOfInquiriesByStatus, getAllInquries, deleteInquiry } = require('../db/inquiry')
+const { getInquiryById, getInquiriesByStatus, deleteInquiryById, getCountOfInquiriesByStatus, getAllInquries, deleteInquiry, changeInquiryStatusById } = require('../db/inquiry')
 
 adminRouter.get('/inquiryByStatus/:status', async (req, res, next) => {
     const {status} = req.params
@@ -11,6 +11,19 @@ adminRouter.get('/inquiryByStatus/:status', async (req, res, next) => {
         const inquiries = await getInquiriesByStatus({status: status})
         res.send({inquiries: inquiries})
     }
+})
+
+adminRouter.post('/updateInquiry/:id', async(req, res, next) => {
+    const {status} = req.body
+    const {id} = req.params
+    const inquiry = await getInquiryById({id: id})
+    if (inquiry) {
+        const updateInquiry = await changeInquiryStatusById({id: id, status: status})
+        res.send({inquiry: updateInquiry})
+    }else {
+        res.send({error: true, message: "There is no inquiry by that id."})
+    }
+    
 })
 
 adminRouter.get('/inquiryCounts', async (req, res, next) => {

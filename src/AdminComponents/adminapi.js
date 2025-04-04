@@ -1,4 +1,5 @@
 
+
 const {REACT_APP_BASE_URL = 'http://localhost:4000/api' } = process.env
 const BASE_URL = REACT_APP_BASE_URL
 
@@ -66,6 +67,27 @@ export const getInquiriesByStatus = async({token, status}) => {
         return data
     }catch(error) {
         console.error("There was an error getting the inquiries by status in admin/adminapi", error)
+        throw error
+    }
+}
+
+export const changeInquiryStatus = async({status, id, token}) => {
+    console.log("In changeInquiyr", status)
+    try {
+        const response = await fetch(`${BASE_URL}/admin/updateInquiry/${id}`,{
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                status: status
+            })
+        })
+        const result = await response.json()
+        return result
+    }catch(error) {
+        console.error("There was an error changing inquiry status in admin/adminapi.js", error)
         throw error
     }
 }

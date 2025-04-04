@@ -2,13 +2,11 @@ const client = require('./index')
 
 const createInquiry = async ({email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode, date, }) => {
     try { 
-        console.log(email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode, date)
-        const {rows: [inquiry]} = await client.query(`
+       const {rows: [inquiry]} = await client.query(`
             INSERT INTO inquiry (email, "phoneNumber", "firstName", "lastName", address, "addressTwo", city, "zipCode", date)
             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
             RETURNING *;
             `, [email, phoneNumber, firstName, lastName, address, addressTwo, city, zipCode, date])
-            console.log("After creation")
             return inquiry
     }catch(error) {
         console.error("There was an error creating the inquiry in inquiry/db", error)
@@ -82,11 +80,40 @@ const deleteInquiryById = async({id}) => {
     }
 }
 
+const changeInquiryStatusById = async({id, status}) => {
+    try {
+        const {rows: [inquiry]} = await client.query(`
+            UPDATE inquiry 
+            SET status = $1
+            WHERE id = $2
+            RETURNING *;
+            `, [status, id])
+            return inquiry
+    }catch(error) {
+        console.error("There was an error changing the status by id", error)
+        throw error
+    }
+}
+
+const getInquiryById = async({id}) => {
+    try {
+        const {rows: [inquiry]} = await client.query(`
+            SELECT * FROM inquiry WHERE id = $1;
+            `, [id])
+            return inquiry
+    }catch (error) {
+        console.error("There was an error getting inquiry by id in db/inquiry", error)
+        throw error
+    }
+}
+
 module.exports = {
     createInquiry,
     deleteInquiry,
     getInquiriesByStatus,
     getCountOfInquiriesByStatus,
     getAllInquries,
-    deleteInquiryById
+    deleteInquiryById,
+    changeInquiryStatusById,
+    getInquiryById
 }
