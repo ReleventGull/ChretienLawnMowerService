@@ -1,9 +1,7 @@
 import ReactDOM from 'react-dom'
 
-const InquiryModal = ({selectedInquiry, setSelectedInquiry}) => {
-    console.log(selectedInquiry)
+const InquiryModal = ({selectedInquiry, setSelectedInquiry, updateInquiry}) => {
     return ReactDOM.createPortal(
-
         <div className="inquiryModalContainer">
             <div className="selectedInquiryContainer">
                 <div className='topSelectedInquiryContainer'>
@@ -17,9 +15,14 @@ const InquiryModal = ({selectedInquiry, setSelectedInquiry}) => {
                     <p><strong>Email:</strong> {selectedInquiry.email}</p>
                     <p><strong>Email:</strong> {selectedInquiry.phoneNumber}</p>
                     <p><strong>Date Submitted:</strong> {new Date(parseInt(selectedInquiry.date)).toLocaleDateString()}</p>
-                    <p><strong>Status:</strong> <span className={`displayStatus ${selectedInquiry.status}`}> {selectedInquiry.status}</span></p>
+                        <div>
+                        <strong>Status:</strong> <select onChange={(e) => updateInquiry({status: e.target.value})} className={`displayStatus ${selectedInquiry.status}`}>
+                            <option value="Open" className={`displayStatus Open`} selected>Open</option>
+                            <option value="Completed" className={`displayStatus Completed`}>Completed</option> 
+                            <option value="Non-Servicable" className={`displayStatus Non-Servicable`}>Non-Servicable</option> 
+                        </select>
+                        </div>
                 </div>
-                <div></div>
             </div>
         </div>,
         document.getElementById("portal")

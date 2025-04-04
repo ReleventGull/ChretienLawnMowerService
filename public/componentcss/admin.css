@@ -357,9 +357,17 @@
     color: #007bff;
     background: #e7f0ff;
   }
-  .displayStatus.Close {
+  .displayStatus.Closed {
     color: #dc3545;
     background: #f8d7da;
+  }
+  .displayStatus.Completed {
+    color: #155724;
+    background: #d4edda;  
+  }
+  .displayStatus.Non-Servicable {
+    color: #383d41;
+    background: #d6d8db;
   }
   @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
