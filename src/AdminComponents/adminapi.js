@@ -111,3 +111,18 @@ export const searchInquiryByQuery = async({query, token, status}) => {
     throw error
     }
 }
+
+export const deleteInquiry = async({token, id}) => {
+    try {
+        const response = await fetch(`${BASE_URL}/admin/deleteInquiry/${id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        const result = response.json()
+        return result
+    } catch(error) {
+        console.error("There was an error deleting inquiry by id in admin/adminapi.js")
+    }
+}
