@@ -107,11 +107,12 @@ const getInquiryById = async({id}) => {
     }
 }
 
-const getInquiriesBySearchQuery = async({searchQuery}) => {
+const getInquiriesBySearchQuery = async({searchQuery, status}) => {
     try {
         const {response: inquires} = await client.query(
             `SELECT * FROM inquiry 
-                WHERE 
+            WHERE 
+            (
                 email ILIKE '%' || $1 || '%' OR
                 "phoneNumber" ILIKE '%' || $1 || '%' OR
                 "firstName" ILIKE '%' || $1 || '%' OR
@@ -119,8 +120,12 @@ const getInquiriesBySearchQuery = async({searchQuery}) => {
                 address ILIKE '%' || $1 || '%' OR
                 "addressTwo" ILIKE '%' || $1 || '%' OR
                 city ILIKE '%' || $1 || '%' OR
-                "zipCode" ILIKE '%' || $1 || '%';
-            `, [searchQuery]
+                "zipCode" ILIKE '%' || $1 || '%'
+            )
+            AND (
+                $2 = 'All' OR status = $2
+            );  
+            `, [searchQuery, status]
         )
         return inquires
     } catch(error) {
