@@ -108,8 +108,9 @@ const getInquiryById = async({id}) => {
 }
 
 const getInquiriesBySearchQuery = async({searchQuery, status}) => {
+    console.log("In db", searchQuery)
     try {
-        const {response: inquires} = await client.query(
+        const {rows: inquires} = await client.query(
             `SELECT * FROM inquiry 
             WHERE 
             (
@@ -127,6 +128,7 @@ const getInquiriesBySearchQuery = async({searchQuery, status}) => {
             );  
             `, [searchQuery, status]
         )
+        console.log(inquires)
         return inquires
     } catch(error) {
         console.error("There was an error getting inquiries by search in db/inquiry", error)
