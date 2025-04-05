@@ -107,6 +107,33 @@ const getInquiryById = async({id}) => {
     }
 }
 
+const getInquiriesBySearchQuery = async({searchQuery, status}) => {
+    try {
+        const {response: inquires} = await client.query(
+            `SELECT * FROM inquiry 
+            WHERE 
+            (
+                email ILIKE '%' || $1 || '%' OR
+                "phoneNumber" ILIKE '%' || $1 || '%' OR
+                "firstName" ILIKE '%' || $1 || '%' OR
+                "lastName" ILIKE '%' || $1 || '%' OR
+                address ILIKE '%' || $1 || '%' OR
+                "addressTwo" ILIKE '%' || $1 || '%' OR
+                city ILIKE '%' || $1 || '%' OR
+                "zipCode" ILIKE '%' || $1 || '%'
+            )
+            AND (
+                $2 = 'All' OR status = $2
+            );  
+            `, [searchQuery, status]
+        )
+        return inquires
+    } catch(error) {
+        console.error("There was an error getting inquiries by search in db/inquiry", error)
+        throw error
+    }
+}
+
 module.exports = {
     createInquiry,
     deleteInquiry,
@@ -115,5 +142,6 @@ module.exports = {
     getAllInquries,
     deleteInquiryById,
     changeInquiryStatusById,
-    getInquiryById
+    getInquiryById,
+    getInquiriesBySearchQuery
 }
