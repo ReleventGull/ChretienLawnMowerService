@@ -14,20 +14,6 @@ const createInquiry = async ({email, phoneNumber, firstName, lastName, address, 
     }
 }
 
-const deleteInquiry = async({id}) => {
-    try {
-        const {rows: [inquiry]} = await client.query(`
-            DELETE FROM inquiry 
-            WHERE id=$1
-            RETURNING *;
-            `, [id])
-            return inquiry
-    }catch(error) {
-        console.error("There was an error deleting the inquiry in the inquiry/db", error)
-        throw error
-    }
-}
-
 const getInquiriesByStatus = async({status}) => {
     try {
         const {rows: inquries} = await client.query(`
@@ -136,7 +122,6 @@ const getInquiriesBySearchQuery = async({searchQuery, status}) => {
 
 module.exports = {
     createInquiry,
-    deleteInquiry,
     getInquiriesByStatus,
     getCountOfInquiriesByStatus,
     getAllInquries,
