@@ -1,7 +1,9 @@
 import { SearchSVG } from './AdmingSVGComponents/adminsvgexports'
 import { SelectOption, InquiryItem, InquiryModal } from './adminexports'
 import { useEffect, useState } from 'react'
-import { getInquiriesByStatus, changeInquiryStatus } from './adminapi'
+import { getInquiriesByStatus, changeInquiryStatus, searchInquiryByQuery } from './adminapi'
+
+
 
 const svgObject = {
     height: '1.5rem',
@@ -11,10 +13,17 @@ const Inquiry = () => {
     const [currentOption, setCurrentOption] = useState('All')
     const [currentInquiries, setCurrentInquiries] = useState([])
     const [selectedInquiry, setSelectedInquiry] = useState(null)
-    
+    const [searchQuery, setSearchQuery] = useState('')
+   
     const fetchInqurieies = async() => {
         const token = localStorage.getItem("CLSToken")
         const fetchedInquiries = await getInquiriesByStatus({token: token, status: currentOption})
+        setCurrentInquiries(fetchedInquiries.inquiries)
+    }
+
+    const fetchInqurieiesBySearchQuery = async() => {
+        const token = localStorage.getItem("CLSToken")
+        const fetchedInquiries = await searchInquiryByQuery({token: token, status: currentOption, query: searchQuery})
         setCurrentInquiries(fetchedInquiries.inquiries)
     }
 
@@ -38,8 +47,14 @@ const Inquiry = () => {
     }
 
     useEffect(() => {
-        fetchInqurieies()
-    }, [currentOption])
+        if(searchQuery == '') {
+            fetchInqurieies()
+        }else {
+            fetchInqurieiesBySearchQuery()
+        }
+        
+    }, [currentOption, searchQuery])
+
 
     return (
     <div className="inquiryHomeContainer">
@@ -47,7 +62,7 @@ const Inquiry = () => {
         <div className="inquirySearchContainer">
             <div className="inquiryInputContainer">
                 <SearchSVG svgObject={svgObject}/>
-                <input placeholder='Search'></input>
+                <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder='Search'></input>
             </div>
             <SelectOption setCurrentOption={setCurrentOption}/>
         </div>

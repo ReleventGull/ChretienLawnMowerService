@@ -91,3 +91,23 @@ export const changeInquiryStatus = async({status, id, token}) => {
         throw error
     }
 }
+
+export const searchInquiryByQuery = async({query, token, status}) => {
+    try {
+        const response = await fetch(`${BASE_URL}/admin/searchInquiry/${query}`,{
+            method: "POST",
+            headers :{
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                status: status
+            })
+        })
+        const result = response.json();
+        return result
+    } catch(error) {
+        console.error("There was an error searching inquiry by query in admin/adminapi.js", error)
+    throw error
+    }
+}
