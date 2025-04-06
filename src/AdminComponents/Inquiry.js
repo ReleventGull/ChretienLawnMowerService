@@ -2,7 +2,7 @@ import { SearchSVG } from './AdmingSVGComponents/adminsvgexports'
 import { SelectOption, InquiryItem, InquiryModal } from './adminexports'
 import { useEffect, useState } from 'react'
 import { getInquiriesByStatus, changeInquiryStatus, searchInquiryByQuery, deleteInquiry } from './adminapi'
-
+import { useLocation } from 'react-router-dom'
 
 
 
@@ -15,8 +15,9 @@ const Inquiry = () => {
     const [currentInquiries, setCurrentInquiries] = useState([])
     const [selectedInquiry, setSelectedInquiry] = useState(null)
     const [searchQuery, setSearchQuery] = useState('')
-   
+    const loc = useLocation()
     const fetchInqurieies = async() => {
+        console.log("Fetching", currentOption)
         const token = localStorage.getItem("CLSToken")
         const fetchedInquiries = await getInquiriesByStatus({token: token, status: currentOption})
         setCurrentInquiries(fetchedInquiries.inquiries)
@@ -31,14 +32,10 @@ const Inquiry = () => {
     const removeInquiry = async() => {
         const token = localStorage.getItem("CLSToken")
         const response = await deleteInquiry({token: token, id: selectedInquiry.id})
-        console.log("Resonse here", response)
         if(response.status === 200) {
             setSelectedInquiry(null)
-            console.log("STATUS IS BROOO", currentInquiries.length)
             for(let i = 0; i < currentInquiries.length; i++) {
-                console.log("In da loop")
                 if (currentInquiries[i].id == selectedInquiry.id) {
-                    console.log("Found match")
                     currentInquiries.splice(i, 1)
                     setCurrentInquiries(currentInquiries)
                 }
@@ -66,13 +63,16 @@ const Inquiry = () => {
     }
 
     useEffect(() => {
-        console.log("Am I running")
+        console.log("I CHANGED", loc.state)
+        if(loc.state) {
+            setCurrentOption(loc.state.status)
+            loc.state = null
+        }
         if(searchQuery == '') {
             fetchInqurieies()
         }else {
             fetchInqurieiesBySearchQuery()
         }
-        
     }, [currentOption, searchQuery])
 
 
@@ -84,7 +84,7 @@ const Inquiry = () => {
                 <SearchSVG svgObject={svgObject}/>
                 <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder='Search'></input>
             </div>
-            <SelectOption setCurrentOption={setCurrentOption}/>
+            <SelectOption currentOption={currentOption} setCurrentOption={setCurrentOption}/>
         </div>
         <div className='inquiryDisplayContainer'>
             <div className='inquiryDetails'>
