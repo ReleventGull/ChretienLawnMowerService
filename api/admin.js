@@ -44,11 +44,11 @@ adminRouter.get('/inquiryCounts', async (req, res, next) => {
     })
 })
 
-adminRouter.post('/deleteInquiry/:id', async (req, res, next) => {
+adminRouter.delete('/deleteInquiry/:id', async (req, res, next) => {
     const {id} = req.params
     const deletedInquiry = await deleteInquiryById({id: id})
     if(deletedInquiry) {
-        res.send({inquiry: deletedInquiry})
+        res.status(200).send({inquiry: deletedInquiry})
     }else {
         res.send({message: "There is no inquiry with that ID."})
     }

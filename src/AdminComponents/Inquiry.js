@@ -1,7 +1,8 @@
 import { SearchSVG } from './AdmingSVGComponents/adminsvgexports'
 import { SelectOption, InquiryItem, InquiryModal } from './adminexports'
 import { useEffect, useState } from 'react'
-import { getInquiriesByStatus, changeInquiryStatus, searchInquiryByQuery } from './adminapi'
+import { getInquiriesByStatus, changeInquiryStatus, searchInquiryByQuery, deleteInquiry } from './adminapi'
+
 
 
 
@@ -27,6 +28,24 @@ const Inquiry = () => {
         setCurrentInquiries(fetchedInquiries.inquiries)
     }
 
+    const removeInquiry = async() => {
+        const token = localStorage.getItem("CLSToken")
+        const response = await deleteInquiry({token: token, id: selectedInquiry.id})
+        console.log("Resonse here", response)
+        if(response.status === 200) {
+            setSelectedInquiry(null)
+            console.log("STATUS IS BROOO", currentInquiries.length)
+            for(let i = 0; i < currentInquiries.length; i++) {
+                console.log("In da loop")
+                if (currentInquiries[i].id == selectedInquiry.id) {
+                    console.log("Found match")
+                    currentInquiries.splice(i, 1)
+                    setCurrentInquiries(currentInquiries)
+                }
+            }
+        }
+    }
+
     const updateInquiry = async({status}) => {
         const token = localStorage.getItem("CLSToken")
         const response = await changeInquiryStatus({token: token, status: status, id: selectedInquiry.id})
@@ -47,6 +66,7 @@ const Inquiry = () => {
     }
 
     useEffect(() => {
+        console.log("Am I running")
         if(searchQuery == '') {
             fetchInqurieies()
         }else {
@@ -58,7 +78,7 @@ const Inquiry = () => {
 
     return (
     <div className="inquiryHomeContainer">
-        {selectedInquiry ? <InquiryModal updateInquiry={updateInquiry} selectedInquiry={selectedInquiry} setSelectedInquiry={setSelectedInquiry}/> : null}
+        {selectedInquiry ? <InquiryModal removeInquiry={removeInquiry} updateInquiry={updateInquiry} selectedInquiry={selectedInquiry} setSelectedInquiry={setSelectedInquiry}/> : null}
         <div className="inquirySearchContainer">
             <div className="inquiryInputContainer">
                 <SearchSVG svgObject={svgObject}/>
