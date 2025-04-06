@@ -1,7 +1,6 @@
 
 
 const InquiryItem = ({inquiry, setSelectedInquiry}) => {
-    console.log(inquiry)
     return (
         <div onClick={() => setSelectedInquiry(inquiry)} className="inquiryItemContainer">
             <div>

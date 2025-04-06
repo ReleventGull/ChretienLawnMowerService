@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom'
 
-const InquiryModal = ({selectedInquiry, setSelectedInquiry, updateInquiry}) => {
+const InquiryModal = ({selectedInquiry, setSelectedInquiry, updateInquiry, removeInquiry}) => {
     return ReactDOM.createPortal(
         <div className="inquiryModalContainer">
             <div className="selectedInquiryContainer">
@@ -21,6 +21,9 @@ const InquiryModal = ({selectedInquiry, setSelectedInquiry, updateInquiry}) => {
                             <option value="Completed" className={`displayStatus Completed`}>Completed</option> 
                             <option value="Non-Servicable" className={`displayStatus Non-Servicable`}>Non-Servicable</option> 
                         </select>
+                        </div>
+                        <div className='inquiryDeleteContainer'>
+                            <button className='deleteInquiryButton' onClick={() => removeInquiry()}>Delete</button>
                         </div>
                 </div>
             </div>

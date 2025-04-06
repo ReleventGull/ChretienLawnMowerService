@@ -120,8 +120,8 @@ export const deleteInquiry = async({token, id}) => {
                 Authorization: `Bearer ${token}`
             }
         })
-        const result = response.json()
-        return result
+
+        return response
     } catch(error) {
         console.error("There was an error deleting inquiry by id in admin/adminapi.js")
     }
