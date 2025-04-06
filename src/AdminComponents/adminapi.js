@@ -41,7 +41,6 @@ export const getAdmin = async({token}) => {
 }
 
 export const getInquiryCounts = async({token}) => {
-    console.log("TOKEN IN API", token)
     try {
         const response = await fetch(`${BASE_URL}/admin/inquiryCounts`, {
             headers: {
@@ -72,7 +71,6 @@ export const getInquiriesByStatus = async({token, status}) => {
 }
 
 export const changeInquiryStatus = async({status, id, token}) => {
-    console.log("In changeInquiyr", status)
     try {
         const response = await fetch(`${BASE_URL}/admin/updateInquiry/${id}`,{
             method: "POST",

@@ -9,7 +9,6 @@ const App = () => {
     const nav = useNavigate()
     
     useEffect(() => {
-        console.log(loc)
         if(loc.pathname == '/') {
             nav('/app/home')
         }
