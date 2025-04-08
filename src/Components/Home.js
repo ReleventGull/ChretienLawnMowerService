@@ -2,10 +2,9 @@ import {Contact} from './exports'
 import {Vouch, HomeFooter, Map, Service} from './exports'
 
 
-const Home = ({imageSlideTick}) => {
+const Home = () => {
     return (
         <div className="routePage home">
-           <Vouch imageSlideTick={imageSlideTick}/>
            <Service />
            <Map /> 
            <Contact />
