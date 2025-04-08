@@ -267,7 +267,7 @@ input:focus ~ .contactBox {
 .vouchQuoteBox h1 {
     font-weight: bold;
     color: var(--primary-gold);
-    font-size: 3vw;
+    font-size: 3rem;
     text-wrap: nowrap;
 } 
 
@@ -278,31 +278,32 @@ input:focus ~ .contactBox {
 .getQuoteButton {
     color: var(--primary-green);
     outline: 0;
-    border-top-right-radius: 1.3vw;
-    border-bottom-left-radius: 1.3vw;
+    border-top-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
     border: 0 ;
     background-color: var(--primary-gold);;
-    font-size: 1.8vw;
+    font-size: 2rem;
     z-index: 1;
     cursor: pointer;
     transition: .2s;
-    padding: .2rem;
-    margin-top: 1vw;
+    padding: .4rem;
+    margin-top: 1rem;
 }
 
 .getQuoteButton:hover {
     color: var(--primary-gold);
     background-color: var(--primary-green);
     transition: .2s;
-    border-bottom-right-radius: 1.3vw;
-    border-top-left-radius: 1.3vw;
+    border-bottom-right-radius: 3rem;
+    border-top-left-radius: 3rem;
     border-top-right-radius: 0;
     border-bottom-left-radius: 0;
 }
 .swiper {
-    height: 35vw; 
-    width: 70vw;
-    border-radius: 10px
+   width: 80rem;
+   height: 40rem;
+   border-radius: 10px;
+   max-width: 100%;
 }
 
 .contactBoxTwo {
@@ -366,12 +367,18 @@ input:focus ~ .contactBox {
     color: #555; 
     line-height: 1.5;
   }
-  
+  @media (max-width: 2000px ){
+    .swiper {
+        width: 65rem;
+        height: 40rem
+    }
+  }
 
   @media (max-width: 1000px) {
     .serviceCard {
       width: 48%; 
     }
+
   }
   
   @media (max-width: 480px) {

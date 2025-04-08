@@ -4,7 +4,6 @@ import {Routes, Route} from 'react-router-dom'
 import {Navbar, Home, MainApp} from './Components/exports'
 import Admin from './AdminComponents/Admin'
 const App = () => {
-    const imageSlideTick = useRef(null)
     const loc = useLocation()
     const nav = useNavigate()
     
