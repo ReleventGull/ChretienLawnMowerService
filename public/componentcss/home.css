@@ -240,7 +240,7 @@ input:focus ~ .contactBox {
 .vouchQuoteBox h1 {
     font-weight: bold;
     color: white;
-    font-size: clamp(2rem, 5rem, 9rem);
+    font-size: 5rem;
     -webkit-text-stroke: 2px black;
 } 
 
@@ -260,6 +260,7 @@ input:focus ~ .contactBox {
     width: 21rem;
     font-size: 2.5rem;
 }
+
 @media (max-width: 1000px){
     .getFreeQuoteContainer {
         background-position: 83%;
@@ -271,7 +272,7 @@ input:focus ~ .contactBox {
         width: 100%;
     }
     .vouchQuoteBox h1{
-        font-size: clamp(1rem, 8vw, 10rem);
+        font-size: 3rem
     }
     .getQuoteButton {
         width: 10rem;
@@ -286,13 +287,14 @@ input:focus ~ .contactBox {
         width: 100%;
     }
     .vouchQuoteBox h1{
-        font-size: rem
+        font-size: 3rem
     }
     .getQuoteButton {
         width: 10rem;
         font-size: 1rem;
     }
 }
+
 .getQuoteButton:hover {
     color: var(--primary-gold);
     background-color: var(--primary-green);
