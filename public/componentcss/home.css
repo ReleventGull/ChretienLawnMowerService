@@ -179,7 +179,7 @@ input:focus ~ .contactBox {
 .visualMapContainer {
     padding: 1rem;
     width: 1000px;
-    max-width: 80%;
+    max-width: 100%;
 
 }
 
